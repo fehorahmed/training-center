@@ -1132,7 +1132,7 @@
                                 </li> --}}
 
                                 <li class="with-megamenu has-menu-child-item position-static">
-                                    <a href="">Contact Us
+                                    <a href="{{route('contact-us')}}">Contact Us
                                         {{-- <i class="feather-chevron-down"></i> --}}
                                     </a>
                                     <!-- Start Mega Menu  -->

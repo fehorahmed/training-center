@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
