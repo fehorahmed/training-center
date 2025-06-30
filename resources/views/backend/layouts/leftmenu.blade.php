@@ -70,7 +70,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link active" href="index.html">
+                            <a class="menu-link active" href="{{ route('dashboard') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -98,7 +98,7 @@
                 <!--begin:Menu item-->
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <a class="menu-link" href="{{route('global-config')}}">
+                    <a class="menu-link" href="{{ route('global-config') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/abstract/abs014.svg-->
                             <span class="svg-icon svg-icon-2">

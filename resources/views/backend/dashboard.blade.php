@@ -1,4 +1,7 @@
 @extends('backend.layouts.app')
+@push('css')
+
+@endpush
 
 @section('content')
     <div class="d-flex flex-column flex-column-fluid">

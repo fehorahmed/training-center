@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('web')->prefix('admin')->group(function () {
+Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');
 
 });
