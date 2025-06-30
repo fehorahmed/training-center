@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('global_configs', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->unique();
+            $table->longText('value')->nullable();
             $table->timestamps();
         });
     }

@@ -55,7 +55,7 @@
                     <!--begin::Content-->
                     <div id="kt_account_settings_profile_details" class="collapse show">
                         <!--begin::Form-->
-                        <form id="kt_account_profile_details_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                        <form id="kt_account_profile_details_form" method="POST" action="{{}}" enctype="multipart/form-data" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
                             <!--begin::Card body-->
                             <div class="card-body border-top p-9">
                                 <!--begin::Input group-->
@@ -64,10 +64,10 @@
                                         <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                             <!--begin::Label-->
                                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                                <span class="required">Target Title</span>
+                                                <span class="required">Website Title </span>
                                             </label>
                                             <!--end::Label-->
-                                            <input type="text" class="form-control form-control-solid" placeholder="Enter Target Title" name="target_title">
+                                            <input type="text" class="form-control form-control-solid" value="{{getGlobalConfig('website_title')}}" placeholder="Enter Website Title" name="website_title">
                                         <div class="fv-plugins-message-container invalid-feedback"></div></div>
                                     </div>
                                     <div class="col-md-6">

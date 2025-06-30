@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');
+    Route::post('/global-config', [GlobalConfigController::class, 'update']);
 
 });
 
