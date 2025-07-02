@@ -42,6 +42,13 @@
                 data-kt-menu="true" data-kt-menu-expand="false">
                 <!--begin:Menu item-->
                 <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+
+                    @php
+                        $menus= ['dashboard'];
+                    @endphp
+
+
+
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -70,7 +77,7 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link active" href="{{ route('dashboard') }}">
+                            <a class="menu-link " href="{{ route('dashboard') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

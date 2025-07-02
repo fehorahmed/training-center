@@ -53,34 +53,29 @@ class GlobalConfigController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'placement_types' => 'nullable|string|max:10000',
+            'website_title' => 'nullable|string|max:10000',
+            'website_logo' => 'nullable|image|max:10000',
         ]);
 
         $request->request->remove('_token');
         $dirty = false;
         foreach ($request->all() as $key => $value) {
 
-
             $submitted = $request->input($key) ?? '';
             $submittedValues = array_map('trim', explode(',', $submitted));
-
             $currentRaw = getGlobalConfig($key);
             $currentValues = array_map('trim', explode(',', $currentRaw));
-
             $removedValues = array_diff($currentValues, $submittedValues);
 
             foreach ($removedValues as $value) {
                 // Example: checking if any user has this role
                 $inUse = false;
-
                 if ($key === 'roles' && \App\Models\User::where('role', $value)->exists()) {
                     $inUse = true;
                 }
-
                 if ($key === 'designations' && \App\Models\User::where('designation', $value)->exists()) {
                     $inUse = true;
                 }
-
                 // if ($key === 'placement_types' && \App\Models\Task::where('placement_type', $value)->exists()) {
                 //     $inUse = true;
                 // }
@@ -89,7 +84,6 @@ class GlobalConfigController extends Controller
                     $blocked[] = $value;
                 }
             }
-
             if (empty($blocked)) {
                 if ((string) $currentRaw !== (string) $submitted) {
                     $this->GlobalConfigUpdate($key, implode(',', $submittedValues));

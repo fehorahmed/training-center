@@ -55,7 +55,7 @@
                     <!--begin::Content-->
                     <div id="kt_account_settings_profile_details" class="collapse show">
                         <!--begin::Form-->
-                        <form id="kt_account_profile_details_form" method="POST" action="{{}}" enctype="multipart/form-data" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                        <form id="kt_account_profile_details_form" method="POST" action="" enctype="multipart/form-data" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
                             <!--begin::Card body-->
                             <div class="card-body border-top p-9">
                                 <!--begin::Input group-->
