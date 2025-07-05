@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\GlobalConfigController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -21,6 +22,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->prefix('admin')->group(function () {
+
+
+    Route::prefix('course-category')->group(function(){
+        Route::get('/', [CourseCategoryController::class, 'index'])->name('admin.course-category.index');
+    });
+
+
+
+
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');
     Route::post('/global-config', [GlobalConfigController::class, 'update']);
 

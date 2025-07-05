@@ -104,10 +104,9 @@
                 <!--end:Menu item-->
 
                 @php
-                    $menus = ['course_category.index'];
+                    $menus = ['admin.course-category.index'];
                 @endphp
-                {{-- hover show --}}
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion ">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{in_array(Route::currentRouteName(), $menus)?'hover show':''}}">
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -125,7 +124,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">User Profile</span>
+                        <span class="menu-title">Application Setting</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
@@ -135,11 +134,11 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="pages/user-profile/overview.html">
+                            <a class="menu-link active" href="{{route('admin.course-category.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Overview</span>
+                                <span class="menu-title">Course Category</span>
                             </a>
                             <!--end:Menu link-->
                         </div>

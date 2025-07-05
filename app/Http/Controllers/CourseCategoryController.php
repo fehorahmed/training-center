@@ -12,7 +12,7 @@ class CourseCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.course-category.index');
     }
 
     /**
