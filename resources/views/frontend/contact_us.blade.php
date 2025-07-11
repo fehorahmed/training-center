@@ -20,8 +20,9 @@
                         </div>
                         <div class="inner">
                             <h4 class="title">Contact Phone Number</h4>
-                            <p><a href="tel:+444555666777">+444 555 666 777</a></p>
-                            <p><a href="tel:+222222222333">+222 222 222 333</a></p>
+                            <p><a href="tel:+8801551515131">+88 01551-515131</a></p>
+                            <p><a href="tel:+8801717515131">+88 01717-515131</a></p>
+                            <p><a href="tel:+8801919515131">+88 01919-515131</a></p>
                         </div>
                     </div>
                 </div>

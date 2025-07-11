@@ -83,7 +83,7 @@
                      <div class="footer-widget">
                          <h5 class="ft-title">Get Contact</h5>
                          <ul class="ft-link">
-                             <li><span>Phone:</span> <a href="#">(406) 555-0120</a></li>
+                             <li><span>Phone:</span> <a href="#">+88 01551-515131</a></li>
                              <li><span>E-mail:</span> <a href="mailto:hr@example.com">pixcels@example.com</a></li>
                              <li><span>Location:</span> North America, USA</li>
                          </ul>
@@ -123,7 +123,7 @@
          <div class="row align-items-center">
              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
                  <p class="rbt-link-hover text-center text-lg-start">Copyright © 2025 <a
-                         href="https://www.pixcelsthemes.com/">Pixcels Themes.</a> All Rights Reserved</p>
+                         href="https://bdskillit.com/">BD Skill IT Themes.</a> All Rights Reserved</p>
              </div>
              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
                  <ul

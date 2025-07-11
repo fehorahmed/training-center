@@ -142,14 +142,14 @@
                         <div class="header-info">
                             <div class="logo logo-dark">
                                 <a href="index.html">
-                                    <img src="{{ asset('assets/frontend/images/logo/logo.png') }}"
+                                    <img src="{{ asset('assets/frontend/images/logo/web_logo.jpeg') }}"
                                         alt="Education Logo Images">
                                 </a>
                             </div>
 
                             <div class="logo d-none logo-light">
                                 <a href="index.html">
-                                    <img src="{{ asset('assets/frontend/images/dark/logo/logo-light.png') }}"
+                                    <img src="{{ asset('assets/frontend/images/dark/logo/web_logo.jpeg') }}"
                                         alt="Education Logo Images">
                                 </a>
                             </div>
@@ -1763,14 +1763,14 @@
                     <div class="logo">
                         <div class="logo logo-dark">
                             <a href="index.html">
-                                <img src="{{ asset('assets/frontend/images/logo/logo.png') }}"
+                                <img src="{{ asset('assets/frontend/images/logo/web_logo.jpeg') }}"
                                     alt="Education Logo Images">
                             </a>
                         </div>
 
                         <div class="logo d-none logo-light">
                             <a href="index.html">
-                                <img src="{{ asset('assets/frontend/images/dark/logo/logo-light.png') }}"
+                                <img src="{{ asset('assets/frontend/images/dark/logo/web_logo.jpeg') }}"
                                     alt="Education Logo Images">
                             </a>
                         </div>
