@@ -26,6 +26,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::prefix('course-category')->group(function(){
         Route::get('/', [CourseCategoryController::class, 'index'])->name('admin.course-category.index');
+        Route::get('/all', [CourseCategoryController::class, 'getData'])->name('course-category.data');
     });
 
 

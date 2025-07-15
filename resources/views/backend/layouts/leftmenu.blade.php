@@ -38,17 +38,14 @@
             data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer"
             data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px">
             <!--begin::Menu-->
+            @php
+                $menus = ['dashboard'];
+            @endphp
             <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold px-3" id="#kt_app_sidebar_menu"
                 data-kt-menu="true" data-kt-menu-expand="false">
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
-
-                    @php
-                        $menus = ['dashboard'];
-                    @endphp
-
-
-
+                <div data-kt-menu-trigger="click"
+                    class="menu-item  menu-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'hover show' : '' }}">
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -73,7 +70,7 @@
                     </span>
                     <!--end:Menu link-->
                     <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-sub menu-sub-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'show' : '' }}">
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
@@ -106,7 +103,8 @@
                 @php
                     $menus = ['admin.course-category.index'];
                 @endphp
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{in_array(Route::currentRouteName(), $menus)?'hover show':''}}">
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'hover show' : '' }}">
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -130,11 +128,16 @@
                     <!--end:Menu link-->
                     <!--begin:Menu sub-->
                     {{-- show --}}
-                    <div class="menu-sub menu-sub-accordion " style="" kt-hidden-height="242">
+                    <div class="menu-sub menu-sub-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'show' : '' }}"
+                        style="" kt-hidden-height="242">
+                        @php
+                            $sub_menus = ['admin.course-category.index'];
+                        @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link active" href="{{route('admin.course-category.index')}}">
+                            <a class="menu-link {{ in_array(Route::currentRouteName(), $sub_menus) ? 'active' : '' }}"
+                                href="{{ route('admin.course-category.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

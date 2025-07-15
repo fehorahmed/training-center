@@ -60,7 +60,7 @@
             <div class="row g-5">
                 <div class="col-lg-6">
                     <div class="thumbnail">
-                        <img class="w-100 radius-6" src="assets/images/about/contact.jpg" alt="Contact Images">
+                        <img class="w-100 radius-6" src="{{asset('assets/frontend/images/about/contact.jpg')}}" alt="Contact Images">
                     </div>
                 </div>
 
