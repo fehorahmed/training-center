@@ -25,19 +25,14 @@ License: For each use you must have a valid license purchased only from above li
     <meta name="keywords"
         content="keen, bootstrap, bootstrap 5, bootstrap 4, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="article" />
     <meta property="og:title" content="Keen - Multi-demo Bootstrap 5 HTML Admin Dashboard Theme" />
-    <meta property="og:url" content="https://keenthemes.com/keen" />
     <meta property="og:site_name" content="Keenthemes | Keen" />
     <link rel="canonical" href="index.html" />
     <link rel="shortcut icon" href="{{asset('assets/backend/media/logos/favicon.ico')}}" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="{{asset('assets/fonts.googleapis.com/css7b91.css?family=Inter:300,400,500,600,700')}}" />
     <!--end::Fonts-->
-    <!--begin::Vendor Stylesheets(used for this page only)-->
-    <link href="{{asset('assets/backend/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets/backend/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{asset('assets/backend/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
@@ -168,32 +163,13 @@ License: For each use you must have a valid license purchased only from above li
         <!--end::Svg Icon-->
     </div>
     <!--end::Scrolltop-->
-    <!--begin::Modals-->
-    <!--begin::Modal - Upgrade plan-->
 
-    <!--end::Modal - Upgrade plan-->
-    <!--begin::Modal - Create Campaign-->
-
-    <!--end::Modal - Create Campaign-->
-    <!--begin::Modal - Users Search-->
-
-    <!--end::Modal - Users Search-->
-    <!--begin::Modal - Invite Friends-->
-
-    <!--end::Modal - Invite Friend-->
-    <!--end::Modals-->
     <!--begin::Javascript-->
-    <script>
-        var hostUrl = "assets/index.html";
-    </script>
+
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
     <script src="{{asset('assets/backend/plugins/global/plugins.bundle.js')}}"></script>
     <script src="{{asset('assets/backend/js/scripts.bundle.js')}}"></script>
     <!--end::Global Javascript Bundle-->
-    <!--begin::Vendors Javascript(used for this page only)-->
-
-    {{-- <script src="{{asset('assets/backend/plugins/custom/datatables/datatables.bundle.js')}}"></script> --}}
-    <!--end::Vendors Javascript-->
 
     <!--end::Javascript-->
 

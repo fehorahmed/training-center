@@ -17,8 +17,8 @@ class CourseCategoryController extends Controller
     }
     public function getData(Request $request)
     {
-        dd('asdsa');
-        $datas = CourseCategory::select(['id', 'name', 'email', 'created_at']);
+        // dd('asdsa');
+        $datas = CourseCategory::query();
 
         return DataTables::of($datas)
             ->addIndexColumn() // optional: adds serial number
