@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class CourseController extends Controller
 {
@@ -12,9 +13,26 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.course.index');
     }
 
+    public function getData(Request $request)
+    {
+        // dd('asdsa');
+        $datas = Course::query();
+
+        return DataTables::of($datas)
+            ->addIndexColumn() // optional: adds serial number
+            ->addColumn('action', function ($data) {
+                return '<a href="'.route('course-category.edit',$data->id).'" class="btn btn-sm btn-primary">Edit</a>';
+                // return '<a href="'.route('users.edit', $data->id).'" class="btn btn-sm btn-primary">Edit</a>';
+            })
+            ->editColumn('image', function ($data) {
+                return $data->image?'<img src="'.asset('storage/course_category/'.$data->image).'" alt="" height=60px width=60px>' : '';
+            })
+            ->rawColumns(['image','action']) // for rendering HTML in action column
+            ->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      */

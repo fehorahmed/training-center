@@ -101,7 +101,7 @@
                 <!--end:Menu item-->
 
                 @php
-                    $menus = ['admin.course-category.index'];
+                    $menus = ['admin.course-category.index','course-category.create'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'hover show' : '' }}">
@@ -131,7 +131,7 @@
                     <div class="menu-sub menu-sub-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'show' : '' }}"
                         style="" kt-hidden-height="242">
                         @php
-                            $sub_menus = ['admin.course-category.index'];
+                            $sub_menus = ['admin.course-category.index','course-category.create'];
                         @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
