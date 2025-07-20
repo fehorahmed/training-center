@@ -70,7 +70,8 @@
                     </span>
                     <!--end:Menu link-->
                     <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'show' : '' }}">
+                    <div
+                        class="menu-sub menu-sub-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'show' : '' }}">
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
@@ -101,7 +102,7 @@
                 <!--end:Menu item-->
 
                 @php
-                    $menus = ['admin.course-category.index','course-category.create'];
+                    $menus = ['admin.course-category.index', 'course-category.create','admin.course.index', 'course.create'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'hover show' : '' }}">
@@ -131,7 +132,7 @@
                     <div class="menu-sub menu-sub-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'show' : '' }}"
                         style="" kt-hidden-height="242">
                         @php
-                            $sub_menus = ['admin.course-category.index','course-category.create'];
+                            $sub_menus = ['admin.course-category.index', 'course-category.create'];
                         @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
@@ -146,14 +147,17 @@
                             <!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
+                        @php
+                            $sub_menus = ['admin.course.index', 'course.create'];
+                        @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="pages/user-profile/projects.html">
+                            <a class="menu-link {{ in_array(Route::currentRouteName(), $sub_menus) ? 'active' : '' }}" href="{{ route('admin.course.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Projects</span>
+                                <span class="menu-title">Course</span>
                             </a>
                             <!--end:Menu link-->
                         </div>

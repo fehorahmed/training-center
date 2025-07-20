@@ -28,10 +28,13 @@ class CourseCategoryController extends Controller
                 return '<a href="'.route('course-category.edit',$data->id).'" class="btn btn-sm btn-primary">Edit</a>';
                 // return '<a href="'.route('users.edit', $data->id).'" class="btn btn-sm btn-primary">Edit</a>';
             })
+            ->editColumn('status', function ($data) {
+                return $data->status?'<span class="badge badge-primary">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
+            })
             ->editColumn('image', function ($data) {
                 return $data->image?'<img src="'.asset('storage/course_category/'.$data->image).'" alt="" height=60px width=60px>' : '';
             })
-            ->rawColumns(['image','action']) // for rendering HTML in action column
+            ->rawColumns(['status','image','action']) // for rendering HTML in action column
             ->make(true);
     }
 
@@ -118,7 +121,7 @@ class CourseCategoryController extends Controller
             $courseCategory->image =$filename;
         }
         if($courseCategory->save()){
-            return redirect()->route('admin.course-category.index')->with('success','Course Category Created Successfully.');
+            return redirect()->route('admin.course-category.index')->with('success','Course Category Updated Successfully.');
         }else{
             return redirect()->back()->withInput()->with('error','Something went wrong');
         }

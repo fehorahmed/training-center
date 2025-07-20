@@ -4,6 +4,33 @@
 @endpush
 
 @section('content')
+<!--begin::Alert-->
+<div class="alert alert-dismissible bg-primary d-flex flex-column flex-sm-row p-5 mb-10">
+    <!--begin::Icon-->
+    <i class="ki-duotone ki-search-list fs-2hx text-light me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+    <!--end::Icon-->
+
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column text-light pe-0 pe-sm-10">
+        <!--begin::Title-->
+        <h4 class="mb-2 light">This is an alert</h4>
+        <!--end::Title-->
+
+        <!--begin::Content-->
+        <span>The alert component can be used to highlight certain parts of your page for higher content visibility.</span>
+        <!--end::Content-->
+    </div>
+    <!--end::Wrapper-->
+
+    <!--begin::Close-->
+    <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+        <i class="ki-duotone ki-cross fs-1 text-light"><span class="path1"></span><span class="path2"></span></i>
+    </button>
+    <!--end::Close-->
+</div>
+<!--end::Alert-->
+
+
     <div class="d-flex flex-column flex-column-fluid">
         <!--begin::Toolbar-->
         <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
@@ -13,7 +40,7 @@
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                        Course Category</h1>
+                        Course</h1>
                     <!--end::Title-->
                     <!--begin::Breadcrumb-->
                     {{-- <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -38,7 +65,7 @@
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
                     <!--begin::Filter menu-->
                     <div class="d-flex">
-                        <a href="{{route('course-category.create')}}" class="btn btn-icon btn-sm btn-success flex-shrink-0 ms-4">
+                        <a href="{{route('course.create')}}" class="btn btn-icon btn-sm btn-success flex-shrink-0 ms-4">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,13 +94,7 @@
                 <!--begin::Card-->
                 <div class="card">
                     <!--begin::Card header-->
-                    <div class="card-header border-0 pt-6">
-                        <!--begin::Card title-->
-                        <div class="card-title">
-                        </div>
-                        <!--begin::Card title-->
 
-                    </div>
                     <!--end::Card header-->
                     <!--begin::Card body-->
                     <div class="card-body py-4">
@@ -87,7 +108,6 @@
                                        Serial
                                     </th>
                                     <th class="min-w-125px">Name</th>
-                                    <th class="min-w-125px">Image</th>
                                     <th class="min-w-125px">Status</th>
                                     <th class="">Actions</th>
                                 </tr>
@@ -121,7 +141,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('course-category.data') }}',
+                ajax: '{{ route('course.data') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -132,10 +152,10 @@
                         data: 'name',
                         name: 'name'
                     },
-                    {
-                        data: 'image',
-                        name: 'image'
-                    },
+                    // {
+                    //     data: 'details',
+                    //     name: 'details'
+                    // },
                     {
                         data: 'status',
                         name: 'status'

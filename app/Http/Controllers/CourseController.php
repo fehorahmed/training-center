@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseCategory;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -24,13 +25,14 @@ class CourseController extends Controller
         return DataTables::of($datas)
             ->addIndexColumn() // optional: adds serial number
             ->addColumn('action', function ($data) {
-                return '<a href="'.route('course-category.edit',$data->id).'" class="btn btn-sm btn-primary">Edit</a>';
+                return '<a href="'.route('course.edit',$data->id).'" class="btn btn-sm btn-primary">Edit</a>';
                 // return '<a href="'.route('users.edit', $data->id).'" class="btn btn-sm btn-primary">Edit</a>';
             })
-            ->editColumn('image', function ($data) {
-                return $data->image?'<img src="'.asset('storage/course_category/'.$data->image).'" alt="" height=60px width=60px>' : '';
+            ->editColumn('status', function ($data) {
+                return $data->status?'<span class="badge badge-primary">Active</span>' : '<span class="badge badge-danger">Inactive</span>';
             })
-            ->rawColumns(['image','action']) // for rendering HTML in action column
+
+            ->rawColumns(['status','action']) // for rendering HTML in action column
             ->make(true);
     }
     /**
@@ -38,7 +40,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $course_categories = CourseCategory::where('status',1)->get();
+        return view('backend.course.create',compact('course_categories'));
     }
 
     /**
@@ -46,7 +49,24 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:courses,name',
+            'course_category' => 'required|numeric',
+            'details' => 'required|string|max:10000',
+            'status' => 'nullable|boolean',
+        ]);
+
+        $data = new Course();
+        $data->name = $request->name;
+        $data->course_category_id = $request->course_category;
+        $data->details = $request->details;
+        $data->status = $request->status ? $request->status : 0;
+
+        if($data->save()){
+            return redirect()->route('admin.course.index')->with('success','Course Created Successfully.');
+        }else{
+            return redirect()->back()->withInput()->with('error','Something went wrong');
+        }
     }
 
     /**
@@ -62,7 +82,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        $course_categories = CourseCategory::where('status',1)->get();
+        return view('backend.course.edit',compact('course','course_categories'));
     }
 
     /**
@@ -70,7 +91,23 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:courses,name,'.$course->id,
+            'course_category' => 'required|numeric',
+            'details' => 'required|string|max:10000',
+            'status' => 'nullable|boolean',
+        ]);
+
+        $course->name = $request->name;
+        $course->course_category_id = $request->course_category;
+        $course->details = $request->details;
+        $course->status = $request->status ? $request->status : 0;
+
+        if($course->save()){
+            return redirect()->route('admin.course.index')->with('success','Course Updated Successfully.');
+        }else{
+            return redirect()->back()->withInput()->with('error','Something went wrong');
+        }
     }
 
     /**
