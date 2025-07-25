@@ -111,7 +111,7 @@
                                         </div>
                                         <!--end::Col-->
                                         <div class="col-md-6 fv-row fv-plugins-icon-container">
-                                            <label for="course_category" class="required fs-5 fw-semibold mb-2"> Course
+                                            <label for="course_category" class=" fs-5 fw-semibold mb-2"> Course
                                                 Category</label>
                                             <select class="form-select" aria-label="Select example" name="course_category"
                                                 id="course_category">

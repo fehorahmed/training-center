@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GlobalConfig;
+use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Http\Request;
 
 class GlobalConfigController extends Controller
@@ -52,59 +53,32 @@ class GlobalConfigController extends Controller
      */
     public function update(Request $request)
     {
+        // dd($request->all());
         $request->validate([
-            'website_title' => 'nullable|string|max:10000',
             'website_logo' => 'nullable|image|max:10000',
+            "website_title" => 'required|string|max:255',
+            "contact_number" => 'required|string|max:20',
+            "contact_email" => 'required|email|max:255',
+            "contact_address" => 'required|string|max:500',
+            "facebook_page" => 'nullable|url|max:255',
+            "instagram_page" => 'nullable|url|max:255',
         ]);
 
         $request->request->remove('_token');
         $dirty = false;
         foreach ($request->all() as $key => $value) {
-
-            $submitted = $request->input($key) ?? '';
-            $submittedValues = array_map('trim', explode(',', $submitted));
-            $currentRaw = getGlobalConfig($key);
-            $currentValues = array_map('trim', explode(',', $currentRaw));
-            $removedValues = array_diff($currentValues, $submittedValues);
-
-            foreach ($removedValues as $value) {
-                // Example: checking if any user has this role
-                $inUse = false;
-                if ($key === 'roles' && \App\Models\User::where('role', $value)->exists()) {
-                    $inUse = true;
-                }
-                if ($key === 'designations' && \App\Models\User::where('designation', $value)->exists()) {
-                    $inUse = true;
-                }
-                // if ($key === 'placement_types' && \App\Models\Task::where('placement_type', $value)->exists()) {
-                //     $inUse = true;
-                // }
-
-                if ($inUse) {
-                    $blocked[] = $value;
-                }
+            $currentValue = getGlobalConfig($key); // Or however your config is stored
+            if ((string) $currentValue !== (string) $value) {
+                $this->GlobalConfigUpdate($key, $value);
+                $dirty = true;
             }
-            if (empty($blocked)) {
-                if ((string) $currentRaw !== (string) $submitted) {
-                    $this->GlobalConfigUpdate($key, implode(',', $submittedValues));
-                    $dirty = true;
-                }
-            }
-            // $currentValue = getGlobalConfig($key); // Or however your config is stored
-            // if ((string) $currentValue !== (string) $value) {
-            //     $this->GlobalConfigUpdate($key, $value);
-            //     $dirty = true;
-            // }
-        }
-        if (!empty($blocked)) {
-            return redirect()->back()->with('error', 'Cannot remove in-use values: ' . implode(', ', $blocked));
         }
         if ($dirty) {
-            return redirect()->back()->with('success', trans('app.message.update.success'));
+            Flasher::success('Global Config update successfully.');
         } else {
-
-            return redirect()->back()->with('warning', trans('app.message.no-change'));
+            Flasher::info('No changes made to Global Config.');
         }
+        return redirect(route('global-config'));
     }
 
     /**
@@ -124,10 +98,8 @@ class GlobalConfigController extends Controller
             return $config->save();
         } else {
             $config = new GlobalConfig();
-
             $config->key = $key;
             $config->value = is_array($value) ? implode(',', $value) : $value;
-
             return $config->save();
         }
     }

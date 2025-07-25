@@ -34,8 +34,8 @@
                         </div>
                         <div class="inner">
                             <h4 class="title">Our Email Address</h4>
-                            <p><a href="mailto:admin@gmail.com">admin@gmail.com</a></p>
-                            <p><a href="mailto:example@gmail.com">example@gmail.com</a></p>
+                            <p><a href="mailto:{{getGlobalConfig('contact_email')}}">{{getGlobalConfig('contact_email')}}</a></p>
+                            {{-- <p><a href="mailto:example@gmail.com">example@gmail.com</a></p> --}}
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="inner">
                             <h4 class="title">Our Location</h4>
-                            <p>5678 Bangla Main Road, cities 580 <br> GBnagla, example 54786</p>
+                            {{getGlobalConfig('contact_address')}}
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
 
     <div class="rbt-google-map bg-color-white rbt-section-gapTop">
         <iframe class="w-100"
-            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d650.3827109398519!2d90.42091811469915!3d24.01905797807584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sbd!4v1753421844840!5m2!1sen!2sbd"
             height="600" style="border:0"></iframe>
     </div>
 @endsection

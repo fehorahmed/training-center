@@ -37,7 +37,11 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{asset('assets/backend/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/backend/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-
+    <style>
+        .fl-wrapper{
+            z-index: 9999 !important;
+        }
+    </style>
     @stack('css')
     <!--end::Global Stylesheets Bundle-->
     <!--Begin::Google Tag Manager -->

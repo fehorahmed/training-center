@@ -7,12 +7,12 @@
                      <div class="footer-widget">
                          <div class="logo logo-dark">
                              <a href="index.html">
-                                 <img src="{{ asset('assets/frontend/images/logo/logo.png') }}" alt="Edu-cause">
+                                 <img src="{{ asset('assets/frontend/images/logo/web_logo.jpeg') }}" alt="Edu-cause">
                              </a>
                          </div>
                          <div class="logo d-none logo-light">
                              <a href="index.html">
-                                 <img src="{{ asset('assets/frontend/images/dark/logo/logo-light.png') }}"
+                                 <img src="{{ asset('assets/frontend/images/dark/logo/web_logo.jpeg') }}"
                                      alt="Edu-cause">
                              </a>
                          </div>
@@ -22,7 +22,7 @@
                          </p>
 
                          <div class="contact-btn mt--30">
-                             <a class="rbt-btn hover-icon-reverse btn-border-gradient radius-round" href="#">
+                             <a class="rbt-btn hover-icon-reverse btn-border-gradient radius-round" href="{{route('contact-us')}}">
                                  <div class="icon-reverse-wrapper">
                                      <span class="btn-text">Contact With Us</span>
                                      <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -61,19 +61,19 @@
                          <h5 class="ft-title">Our Company</h5>
                          <ul class="ft-link">
                              <li>
-                                 <a href="contact.html">Contact Us</a>
+                                 <a href="{{route('contact-us')}}">Contact Us</a>
                              </li>
                              <li>
-                                 <a href="become-a-teacher.html">Become Teacher</a>
+                                 <a href="#">Become Teacher</a>
                              </li>
                              <li>
-                                 <a href="blog.html">Blog</a>
+                                 <a href="#">Blog</a>
                              </li>
                              <li>
-                                 <a href="instructor.html">Instructor</a>
+                                 <a href="#">Instructor</a>
                              </li>
                              <li>
-                                 <a href="event-list.html">Events</a>
+                                 <a href="#">Events</a>
                              </li>
                          </ul>
                      </div>
@@ -83,24 +83,24 @@
                      <div class="footer-widget">
                          <h5 class="ft-title">Get Contact</h5>
                          <ul class="ft-link">
-                             <li><span>Phone:</span> <a href="#">+88 01551-515131</a></li>
-                             <li><span>E-mail:</span> <a href="mailto:hr@example.com">pixcels@example.com</a></li>
-                             <li><span>Location:</span> North America, USA</li>
+                             <li><span>Phone:</span> <a href="#">{{getGlobalConfig('contact_number')}}</a></li>
+                             <li><span>E-mail:</span> <a href="mailto:{{getGlobalConfig('contact_email')}}">{{getGlobalConfig('contact_email')}}</a></li>
+                             <li><span>Location:</span> {{getGlobalConfig('contact_address')}}</li>
                          </ul>
                          <ul class="social-icon social-default icon-naked justify-content-start mt--20">
-                             <li><a href="https://www.facebook.com/">
+                             <li><a href="{{getGlobalConfig('facebook_page')}}">
                                      <i class="feather-facebook"></i>
                                  </a>
                              </li>
-                             <li><a href="https://www.twitter.com/">
+                             <li><a href="{{getGlobalConfig('twitter_page')}}">
                                      <i class="feather-twitter"></i>
                                  </a>
                              </li>
-                             <li><a href="https://www.instagram.com/">
+                             <li><a href="{{getGlobalConfig('instagram_page')}}">
                                      <i class="feather-instagram"></i>
                                  </a>
                              </li>
-                             <li><a href="https://www.linkdin.com/">
+                             <li><a href="{{getGlobalConfig('linkedin_page')}}">
                                      <i class="feather-linkedin"></i>
                                  </a>
                              </li>

@@ -102,7 +102,14 @@
                 <!--end:Menu item-->
 
                 @php
-                    $menus = ['admin.course-category.index', 'course-category.create','admin.course.index', 'course.create'];
+                    $menus = [
+                        'admin.course-category.index',
+                        'course-category.create',
+                        'admin.course.index',
+                        'course.create',
+                        'admin.batch.index',
+                        'batch.create',
+                    ];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'hover show' : '' }}">
@@ -153,7 +160,8 @@
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link {{ in_array(Route::currentRouteName(), $sub_menus) ? 'active' : '' }}" href="{{ route('admin.course.index') }}">
+                            <a class="menu-link {{ in_array(Route::currentRouteName(), $sub_menus) ? 'active' : '' }}"
+                                href="{{ route('admin.course.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -162,14 +170,18 @@
                             <!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
+                        @php
+                            $sub_menus = ['admin.batch.index', 'batch.create'];
+                        @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="pages/user-profile/campaigns.html">
+                            <a class="menu-link {{ in_array(Route::currentRouteName(), $sub_menus) ? 'active' : '' }}"
+                                href="{{ route('admin.batch.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Campaigns</span>
+                                <span class="menu-title">Batch</span>
                             </a>
                             <!--end:Menu link-->
                         </div>

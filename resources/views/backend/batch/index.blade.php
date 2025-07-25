@@ -13,7 +13,7 @@
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                        Course List</h1>
+                        Batch List</h1>
                     <!--end::Title-->
                     <!--begin::Breadcrumb-->
                     {{-- <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -38,7 +38,7 @@
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
                     <!--begin::Filter menu-->
                     <div class="d-flex">
-                        <a href="{{route('course.create')}}" class="btn btn-icon btn-sm btn-success flex-shrink-0 ms-4">
+                        <a href="{{route('batch.create')}}" class="btn btn-icon btn-sm btn-success flex-shrink-0 ms-4">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,6 +81,7 @@
                                        Serial
                                     </th>
                                     <th class="min-w-125px">Name</th>
+                                    <th class="min-w-125px">Course Name</th>
                                     <th class="min-w-125px">Status</th>
                                     <th class="">Actions</th>
                                 </tr>
@@ -114,7 +115,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('course.data') }}',
+                ajax: '{{ route('batch.data') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -125,10 +126,10 @@
                         data: 'name',
                         name: 'name'
                     },
-                    // {
-                    //     data: 'details',
-                    //     name: 'details'
-                    // },
+                    {
+                        data: 'course.name',
+                        name: 'course_id'
+                    },
                     {
                         data: 'status',
                         name: 'status'

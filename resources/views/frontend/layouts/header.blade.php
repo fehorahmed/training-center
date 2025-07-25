@@ -16,15 +16,15 @@
                                 <div class="header-info">
                                     <ul class="rbt-information-list">
                                         <li>
-                                            <a href="#"><i class="fab fa-instagram"></i>100k <span
+                                            <a href="{{getGlobalConfig('instagram_page')}}" target="_blank"><i class="fab fa-instagram"></i>100k <span
                                                     class="d-none d-xxl-block">Followers</span></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fab fa-facebook-square"></i>500k <span
+                                            <a href="{{getGlobalConfig('facebook_page')}}" target="_blank"><i class="fab fa-facebook-square"></i>500k <span
                                                     class="d-none d-xxl-block">Followers</span></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
+                                            <a href="#"><i class="feather-phone"></i>{{getGlobalConfig('contact_number')}}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -53,16 +53,16 @@
                                 <div class="header-info d-none d-xl-block">
                                     <ul class="social-share-transparent">
                                         <li>
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                            <a href="{{getGlobalConfig('facebook_page')}}"><i class="fab fa-facebook-f"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                            <a href="{{getGlobalConfig('twitter_page')}}"><i class="fab fa-twitter"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="{{getGlobalConfig('linkedin_page')}}"><i class="fab fa-linkedin-in"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                            <a href="{{getGlobalConfig('instagram_page')}}"><i class="fab fa-instagram"></i></a>
                                         </li>
                                     </ul>
                                 </div>

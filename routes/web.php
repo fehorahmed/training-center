@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BatchController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GlobalConfigController;
@@ -41,6 +42,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/{course}/edit', [CourseController::class, 'edit'])->name('course.edit');
         Route::post('/{course}/update', [CourseController::class, 'update'])->name('course.update');
     });
+    Route::prefix('batch')->group(function(){
+        Route::get('/', [BatchController::class, 'index'])->name('admin.batch.index');
+        Route::get('/all', [BatchController::class, 'getData'])->name('batch.data');
+        Route::get('/create', [BatchController::class, 'create'])->name('batch.create');
+        Route::post('/store', [BatchController::class, 'store'])->name('batch.store');
+        Route::get('/{batch}/edit', [BatchController::class, 'edit'])->name('batch.edit');
+        Route::post('/{batch}/update', [BatchController::class, 'update'])->name('batch.update');
+    });
 
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');
     Route::post('/global-config', [GlobalConfigController::class, 'update']);
@@ -51,5 +60,9 @@ require __DIR__.'/auth.php';
 
 Route::get('/migrate', function () {
     Artisan::call('migrate');
+    return 'success';
+});
+Route::get('/storage', function () {
+    Artisan::call('storage:link');
     return 'success';
 });
