@@ -105,10 +105,16 @@
                     $menus = [
                         'admin.course-category.index',
                         'course-category.create',
+                        'course-category.edit',
                         'admin.course.index',
                         'course.create',
+                        'course.edit',
                         'admin.batch.index',
                         'batch.create',
+                        'batch.edit',
+                        'admin.leader.index',
+                        'leader.create',
+                        'leader.edit',
                     ];
                 @endphp
                 <div data-kt-menu-trigger="click"
@@ -139,7 +145,7 @@
                     <div class="menu-sub menu-sub-accordion {{ in_array(Route::currentRouteName(), $menus) ? 'show' : '' }}"
                         style="" kt-hidden-height="242">
                         @php
-                            $sub_menus = ['admin.course-category.index', 'course-category.create'];
+                            $sub_menus = ['admin.course-category.index', 'course-category.create', 'course-category.edit'];
                         @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
@@ -155,7 +161,7 @@
                         </div>
                         <!--end:Menu item-->
                         @php
-                            $sub_menus = ['admin.course.index', 'course.create'];
+                            $sub_menus = ['admin.course.index', 'course.create', 'course.edit'];
                         @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
@@ -171,7 +177,7 @@
                         </div>
                         <!--end:Menu item-->
                         @php
-                            $sub_menus = ['admin.batch.index', 'batch.create'];
+                            $sub_menus = ['admin.batch.index', 'batch.create', 'batch.edit'];
                         @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
@@ -186,14 +192,17 @@
                             <!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
+                        @php
+                            $sub_menus = ['admin.leader.index', 'leader.create', 'leader.edit'];
+                        @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="pages/user-profile/documents.html">
+                            <a class="menu-link {{ in_array(Route::currentRouteName(), $sub_menus) ? 'active' : '' }}" href="{{ route('admin.leader.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Documents</span>
+                                <span class="menu-title">Our Leaders</span>
                             </a>
                             <!--end:Menu link-->
                         </div>

@@ -173,7 +173,6 @@
                                             </div>
                                         @enderror
                                         <!--end::Hint-->
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
                                     </div>
                                     <!--begin::Input group-->
                                     <div class="fv-row mb-5">

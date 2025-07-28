@@ -1143,8 +1143,8 @@
         <div class="container">
             <div class="row mb--55">
                 <div class="section-title text-center">
-                    <span class="subtitle bg-white-opacity">STIMULATED TO TAKE PART IN?</span>
-                    <h2 class="title color-white">Upcoming Events</h2>
+                    <span class="subtitle bg-white-opacity">Our Leaders</span>
+                    <h2 class="title color-white">Team Behind the Vision</h2>
                 </div>
             </div>
             <div class="row">
@@ -1161,20 +1161,16 @@
                                                 <img src="{{ asset('assets/frontend/images/event/grid-type-02.jpg') }}"
                                                     alt="Card image">
                                                 <div class="rbt-badge-3 bg-white">
-                                                    <span>11 Mar</span>
-                                                    <span>2024</span>
+                                                    <span>CEO</span>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="rbt-card-body">
                                             <ul class="rbt-meta">
-                                                <li><i class="feather-map-pin"></i>Vancouver</li>
-                                                <li><i class="feather-clock"></i>8:00 am - 5:00 pm</li>
-                                            </ul>
-                                            <h4 class="rbt-card-title"><a href="event-details.html">Painting Art
-                                                    Contest 2020 for histudy
-                                                    Clud</a></h4>
 
+                                            </ul>
+                                            <h4 class="rbt-card-title"><a href="event-details.html">Md Hazrat Ali</a></h4>
+                                            <p>dfsdfsd dsf dsf dsf dsf dsf sdfas s sdafsdfsd fsad f sdf dfg df gdfg dsfg dsf gfds</p>
                                             <div class="read-more-btn">
                                                 <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round"
                                                     href="event-details.html">

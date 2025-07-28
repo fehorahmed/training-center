@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GlobalConfigController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OurLeaderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,15 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/store', [BatchController::class, 'store'])->name('batch.store');
         Route::get('/{batch}/edit', [BatchController::class, 'edit'])->name('batch.edit');
         Route::post('/{batch}/update', [BatchController::class, 'update'])->name('batch.update');
+    });
+
+    Route::prefix('our-leader')->group(function(){
+        Route::get('/', [OurLeaderController::class, 'index'])->name('admin.leader.index');
+        Route::get('/all', [OurLeaderController::class, 'getData'])->name('leader.data');
+        Route::get('/create', [OurLeaderController::class, 'create'])->name('leader.create');
+        Route::post('/store', [OurLeaderController::class, 'store'])->name('leader.store');
+        Route::get('/{ourLeader}/edit', [OurLeaderController::class, 'edit'])->name('leader.edit');
+        Route::post('/{ourLeader}/update', [OurLeaderController::class, 'update'])->name('leader.update');
     });
 
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');
