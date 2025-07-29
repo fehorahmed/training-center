@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Laravel\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
 
 class OurLeaderController extends Controller
 {
@@ -26,7 +27,7 @@ class OurLeaderController extends Controller
         return DataTables::of($datas)
             ->addIndexColumn() // optional: adds serial number
             ->addColumn('action', function ($data) {
-                return '<a href="' . route('batch.edit', $data->id) . '" class="btn btn-sm btn-primary">Edit</a>';
+                return '<a href="' . route('leader.edit', $data->id) . '" class="btn btn-sm btn-primary">Edit</a>';
                 // return '<a href="'.route('users.edit', $data->id).'" class="btn btn-sm btn-primary">Edit</a>';
             })
             ->editColumn('status', function ($data) {
@@ -64,6 +65,7 @@ class OurLeaderController extends Controller
 
         $ourLeader = new OurLeader();
         $ourLeader->name = $request->name;
+        $ourLeader->slug = Str::slug($request->name);
         $ourLeader->designation = $request->designation;
         $ourLeader->short_designation = $request->short_designation;
         $ourLeader->short_description = $request->short_description;
@@ -71,14 +73,14 @@ class OurLeaderController extends Controller
         $ourLeader->email = $request->email;
         $ourLeader->details = $request->details;
         $ourLeader->status = $request->status ? 1 : 0;
-          if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $upload = $request->file('image');
             $image = Image::read($upload)
                 ->resize(355, 240);
             $filename = time() . '.' . $upload->getClientOriginalExtension();
             // $image->encodeByExtension($upload->getClientOriginalExtension()
             Storage::disk('public')->put('leader/' . $filename, $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70));
-            $ourLeader->image =$filename;
+            $ourLeader->image = $filename;
         }
         if ($ourLeader->save()) {
 
@@ -103,7 +105,7 @@ class OurLeaderController extends Controller
      */
     public function edit(OurLeader $ourLeader)
     {
-        //
+        return view('backend.leaders.edit', compact('ourLeader'));
     }
 
     /**
@@ -111,7 +113,48 @@ class OurLeaderController extends Controller
      */
     public function update(Request $request, OurLeader $ourLeader)
     {
-        //
+
+        $request->validate([
+            'name' => 'required|string|max:255|unique:our_leaders,name,' . $ourLeader->id,
+            'designation' => 'required|string|max:255',
+            'short_designation' => 'required|string|max:255',
+            'short_description' => 'required|string|max:255',
+            "image" => 'nullable|image|mimes:jpeg,png,jpg,svg|dimensions:width=355,height=240|max:300',
+            'phone' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
+            "details" => 'nullable|string|max:10000',
+            "status" => 'nullable|boolean',
+        ]);
+
+        $ourLeader->name = $request->name;
+        $ourLeader->slug = Str::slug($request->name);
+        $ourLeader->designation = $request->designation;
+        $ourLeader->short_designation = $request->short_designation;
+        $ourLeader->short_description = $request->short_description;
+        $ourLeader->phone = $request->phone;
+        $ourLeader->email = $request->email;
+        $ourLeader->details = $request->details;
+        $ourLeader->status = $request->status ? 1 : 0;
+
+        if ($request->hasFile('image')) {
+            if ($ourLeader->image) {
+                Storage::disk('public')->delete('leader/' . $ourLeader->image);
+            }
+            $upload = $request->file('image');
+            $image = Image::read($upload)
+                ->resize(355, 240);
+            $filename = time() . '.' . $upload->getClientOriginalExtension();
+            Storage::disk('public')->put('leader/' . $filename, $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70));
+            $ourLeader->image = $filename;
+        }
+
+        if ($ourLeader->save()) {
+            Flasher::success('Leader Updated Successfully.');
+            return redirect()->route('admin.leader.index');
+        } else {
+            Flasher::error('Something went wrong');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**

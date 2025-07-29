@@ -154,9 +154,9 @@
                                     <div class="fv-row mb-10 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
                                         <!--begin::Label-->
                                         <label class="d-block fw-semibold fs-6 mb-5">
-                                            <span class="required">Image</span>
+                                            <span class="">Image</span>
                                             <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                                title="E.g. Select an png image dimension ratio is 1:1."></i>
+                                                title="E.g. Select an image dimension is width=355,height=240"></i>
                                         </label>
                                         <!--end::Label-->
                                         <!--begin::Image input placeholder-->
@@ -223,7 +223,7 @@
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="required">Phone</span>
+                                            <span class="">Phone</span>
                                         </label>
                                         <!--end::Label-->
                                         <input type="text" class="form-control form-control-solid"
@@ -238,7 +238,7 @@
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="required">Email</span>
+                                            <span class="">Email</span>
                                         </label>
                                         <!--end::Label-->
                                         <input type="text" class="form-control form-control-solid"

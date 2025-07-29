@@ -208,13 +208,14 @@
                         <a class="rbt-cat-box rbt-cat-box-1 text-center" href="#">
                             <div class="inner">
                                 <div class="icons">
-                                    <img src="{{$course->image ? '' : asset('assets/frontend/images/category/web-design.png') }}"
+                                    <img src="{{ $course->image ? '' : asset('assets/frontend/images/category/web-design.png') }}"
                                         alt="Icons Images">
                                 </div>
                                 <div class="content">
-                                    <h5 class="title">{{$course->name}}</h5>
+                                    <h5 class="title">{{ $course->name }}</h5>
                                     <div class="read-more-btn">
-                                        <span class="rbt-btn-link">{{count($course->batches)}} Batches<i class="feather-arrow-right"></i></span>
+                                        <span class="rbt-btn-link">{{ count($course->batches) }} Batches<i
+                                                class="feather-arrow-right"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -1152,156 +1153,47 @@
                     <div class="swiper event-activation-1 rbt-arrow-between rbt-dot-bottom-center pb--60 icon-bg-primary">
 
                         <div class="swiper-wrapper">
-                            <!-- Start Single Slide  -->
-                            <div class="swiper-slide">
-                                <div class="single-slide">
-                                    <div class="rbt-card event-grid-card variation-01 rbt-hover">
-                                        <div class="rbt-card-img">
-                                            <a href="event-details.html">
-                                                <img src="{{ asset('assets/frontend/images/event/grid-type-02.jpg') }}"
-                                                    alt="Card image">
-                                                <div class="rbt-badge-3 bg-white">
-                                                    <span>CEO</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="rbt-card-body">
-                                            <ul class="rbt-meta">
-
-                                            </ul>
-                                            <h4 class="rbt-card-title"><a href="event-details.html">Md Hazrat Ali</a></h4>
-                                            <p>dfsdfsd dsf dsf dsf dsf dsf sdfas s sdafsdfsd fsad f sdf dfg df gdfg dsfg dsf gfds</p>
-                                            <div class="read-more-btn">
-                                                <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round"
-                                                    href="event-details.html">
-                                                    <span class="icon-reverse-wrapper">
-                                                        <span class="btn-text">Get Ticket</span>
-                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                    </span>
+                            @foreach ($leaders as $leader)
+                                <!-- Start Single Slide  -->
+                                <div class="swiper-slide">
+                                    <div class="single-slide">
+                                        <div class="rbt-card event-grid-card variation-01 rbt-hover">
+                                            <div class="rbt-card-img">
+                                                <a href="event-details.html">
+                                                    <img src="{{ asset('storage/leader/'.$leader->image) }}"
+                                                        alt="Card image">
+                                                    <div class="rbt-badge-3 bg-white">
+                                                        <span>{{$leader->short_designation}}</span>
+                                                    </div>
                                                 </a>
+                                            </div>
+                                            <div class="rbt-card-body">
+                                                <ul class="rbt-meta">
+
+                                                </ul>
+                                                <h4 class="rbt-card-title"><a href="event-details.html">{{$leader->name}}</a>
+                                                </h4>
+                                                <p>{{$leader->short_description}}</p>
+                                                <div class="read-more-btn">
+                                                    <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round"
+                                                        href="event-details.html">
+                                                        <span class="icon-reverse-wrapper">
+                                                            <span class="btn-text">Details</span>
+                                                            <span class="btn-icon"><i
+                                                                    class="feather-arrow-right"></i></span>
+                                                            <span class="btn-icon"><i
+                                                                    class="feather-arrow-right"></i></span>
+                                                        </span>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- End Single Slide  -->
-                            <!-- Start Single Slide  -->
-                            <div class="swiper-slide">
-                                <div class="single-slide">
-                                    <div class="rbt-card event-grid-card variation-01 rbt-hover">
-                                        <div class="rbt-card-img">
-                                            <a href="event-details.html">
-                                                <img src="{{ asset('assets/frontend/images/event/grid-type-04.jpg') }}"
-                                                    alt="Card image">
-                                                <div class="rbt-badge-3 bg-white">
-                                                    <span>11 Jan</span>
-                                                    <span>2024</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="rbt-card-body">
-                                            <ul class="rbt-meta">
-                                                <li><i class="feather-map-pin"></i>IAC Building</li>
-                                                <li><i class="feather-clock"></i>8:00 am - 5:00 pm</li>
-                                            </ul>
-                                            <h4 class="rbt-card-title"><a href="event-details.html">Elegant Light Box
-                                                    Paper Cut Dioramas in
-                                                    UK</a></h4>
+                                <!-- End Single Slide  -->
+                            @endforeach
 
-                                            <div class="read-more-btn">
-                                                <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round"
-                                                    href="event-details.html">
-                                                    <span class="icon-reverse-wrapper">
-                                                        <span class="btn-text">Get Ticket</span>
-                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Slide  -->
 
-                            <!-- Start Single Slide  -->
-                            <div class="swiper-slide">
-                                <div class="single-slide">
-                                    <div class="rbt-card event-grid-card variation-01 rbt-hover">
-                                        <div class="rbt-card-img">
-                                            <a href="event-details.html">
-                                                <img src="{{ asset('assets/frontend/images/event/grid-type-05.jpg') }}"
-                                                    alt="Card image">
-                                                <div class="rbt-badge-3 bg-white">
-                                                    <span>11 Mar</span>
-                                                    <span>2024</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="rbt-card-body">
-                                            <ul class="rbt-meta">
-                                                <li><i class="feather-map-pin"></i>Vancouver</li>
-                                                <li><i class="feather-clock"></i>8:00 am - 5:00 pm</li>
-                                            </ul>
-                                            <h4 class="rbt-card-title"><a href="event-details.html">Most Effective
-                                                    Ways for Education's
-                                                    Problem</a></h4>
-
-                                            <div class="read-more-btn">
-                                                <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round"
-                                                    href="event-details.html">
-                                                    <span class="icon-reverse-wrapper">
-                                                        <span class="btn-text">Get Ticket</span>
-                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Slide  -->
-
-                            <!-- Start Single Slide  -->
-                            <div class="swiper-slide">
-                                <div class="single-slide">
-                                    <div class="rbt-card event-grid-card variation-01 rbt-hover">
-                                        <div class="rbt-card-img">
-                                            <a href="event-details.html">
-                                                <img src="{{ asset('assets/frontend/images/event/grid-type-01.jpg') }}"
-                                                    alt="Card image">
-                                                <div class="rbt-badge-3 bg-white">
-                                                    <span>11 Jan</span>
-                                                    <span>2024</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="rbt-card-body">
-                                            <ul class="rbt-meta">
-                                                <li><i class="feather-map-pin"></i>IAC Building</li>
-                                                <li><i class="feather-clock"></i>8:00 am - 5:00 pm</li>
-                                            </ul>
-                                            <h4 class="rbt-card-title"><a href="event-details.html">International
-                                                    Education Fair 2024</a>
-                                            </h4>
-
-                                            <div class="read-more-btn">
-                                                <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round"
-                                                    href="event-details.html">
-                                                    <span class="icon-reverse-wrapper">
-                                                        <span class="btn-text">Get Ticket</span>
-                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Slide  -->
                         </div>
 
                         <div class="rbt-swiper-arrow rbt-arrow-left">

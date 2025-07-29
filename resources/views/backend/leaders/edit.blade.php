@@ -12,7 +12,7 @@
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                        Create Batch</h1>
+                        Edit Leader</h1>
                     <!--end::Title-->
                     <!--begin::Breadcrumb-->
                     {{-- <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -37,7 +37,7 @@
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
                     <!--begin::Filter menu-->
                     <div class="d-flex">
-                        <a href="{{ route('admin.batch.index') }}" class="btn btn-icon btn-sm btn-info flex-shrink-0 ms-4">
+                        <a href="{{ route('admin.leader.index') }}" class="btn btn-icon btn-sm btn-info flex-shrink-0 ms-4">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <span class="svg-icon svg-icon-3 me-1">
@@ -77,7 +77,7 @@
                     <!--begin::Card body-->
                     <div class="card-body py-4">
                         <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST"
-                            action="{{ route('batch.update',$batch->id) }}" enctype="multipart/form-data">
+                            action="{{ route('leader.update',$ourLeader->id) }}" enctype="multipart/form-data">
                             @csrf
                             <!--begin::Input group-->
                             <div class="row mb-6">
@@ -85,11 +85,11 @@
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="required">Batch Name</span>
+                                            <span class="required">Name</span>
                                         </label>
                                         <!--end::Label-->
                                         <input type="text" class="form-control form-control-solid"
-                                            value="{{ old('name',$batch->name) }}" placeholder="Enter Batch Name" name="name">
+                                            value="{{ old('name',$ourLeader->name) }}" placeholder="Enter Name" name="name">
                                         @error('name')
                                             <div class="fv-plugins-message-container invalid-feedback">
                                                 {{ $message }}
@@ -102,23 +102,151 @@
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="required">Select Course</span>
+                                            <span class="required">Designation</span>
                                         </label>
-                                        <select class="form-select" aria-label="Select course" name="course"
-                                            id="course">
-                                            <option value="">Select Course</option>
-                                            @foreach ($courses as $course)
-                                                <option value="{{ $course->id }}"
-                                                    {{ old('course',$batch->course_id) == $course->id ? 'selected' : '' }}>
-                                                    {{ $course->name }}</option>
-                                            @endforeach
+                                        <!--end::Label-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            value="{{ old('designation',$ourLeader->designation) }}" placeholder="Enter Designation"
+                                            name="designation">
+                                        @error('designation')
+                                            <div class="fv-plugins-message-container invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                            <span class="required">Short Designation</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            value="{{ old('short_designation',$ourLeader->short_designation) }}" placeholder="Enter Short Designation"
+                                            name="short_designation">
+                                        @error('short_designation')
+                                            <div class="fv-plugins-message-container invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
 
-                                        </select>
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                            <span class="required">Short Description</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <textarea name="short_description" class="form-control form-control-solid" id="short_description"
+                                            placeholder="Enter Short Description" cols="30" rows="2">{{ old('short_description',$ourLeader->short_description) }}</textarea>
+
+                                        @error('short_description')
+                                            <div class="fv-plugins-message-container invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="fv-row mb-10 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                                        <!--begin::Label-->
+                                        <label class="d-block fw-semibold fs-6 mb-5">
+                                            <span class="">Image</span>
+                                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                                title="E.g. Select an image dimension is width=355,height=240"></i>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Image input placeholder-->
+                                        <style>
+                                            .image-input-placeholder {
+                                                background-image: url({{ asset('storage/leader/'.$ourLeader->image) }});
+                                            }
+
+                                            [data-theme="dark"] .image-input-placeholder {
+                                                background-image: url({{ asset('storage/leader/'.$ourLeader->image) }});
+                                            }
+                                        </style>
+                                        <!--end::Image input placeholder-->
+                                        <!--begin::Image input-->
+                                        <div class="image-input image-input-empty image-input-outline image-input-placeholder"
+                                            data-kt-image-input="true">
+                                            <!--begin::Preview existing avatar-->
+                                            <div class="image-input-wrapper w-125px h-125px"></div>
+                                            <!--end::Preview existing avatar-->
+                                            <!--begin::Label-->
+                                            <label
+                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                                aria-label="Change avatar" data-bs-original-title="Change avatar"
+                                                data-kt-initialized="1">
+                                                <i class="bi bi-pencil-fill fs-7"></i>
+                                                <!--begin::Inputs-->
+                                                <input type="file" name="image" accept=".png">
+                                                <input type="hidden" name="avatar_remove">
+                                                <!--end::Inputs-->
+                                            </label>
+                                            <!--end::Label-->
+                                            <!--begin::Cancel-->
+                                            <span
+                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                                aria-label="Cancel avatar" data-bs-original-title="Cancel avatar"
+                                                data-kt-initialized="1">
+                                                <i class="bi bi-x fs-2"></i>
+                                            </span>
+                                            <!--end::Cancel-->
+                                            <!--begin::Remove-->
+                                            <span
+                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                data-kt-image-input-action="remove" data-bs-toggle="tooltip"
+                                                aria-label="Remove avatar" data-bs-original-title="Remove avatar"
+                                                data-kt-initialized="1">
+                                                <i class="bi bi-x fs-2"></i>
+                                            </span>
+                                            <!--end::Remove-->
+                                        </div>
+                                        <!--end::Image input-->
                                         <!--begin::Hint-->
-                                        @error('course')
+                                        @error('image')
                                             <div class="fv-plugins-message-container invalid-feedback">
                                                 <div>{{ $message }}
                                                 </div>
+                                            </div>
+                                        @enderror
+                                        <!--end::Hint-->
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                            <span class="">Phone</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            value="{{ old('phone',$ourLeader->phone) }}" placeholder="Enter Phone Number"
+                                            name="phone">
+                                        @error('phone')
+                                            <div class="fv-plugins-message-container invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                            <span class="">Email</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            value="{{ old('email',$ourLeader->email) }}" placeholder="Enter email address"
+                                            name="email">
+                                        @error('email')
+                                            <div class="fv-plugins-message-container invalid-feedback">
+                                                {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
@@ -127,10 +255,10 @@
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="required">Batch Details</span>
+                                            <span class="">Details</span>
                                         </label>
                                         <!--end::Label-->
-                                        <textarea name="details" id="details" cols="30" rows="10">{{old('details',$batch->details)}}</textarea>
+                                        <textarea name="details" id="details" cols="30" rows="10">{{ old('details',$ourLeader->details) }}</textarea>
                                         @error('details')
                                             <div class="fv-plugins-message-container invalid-feedback">
                                                 {{ $message }}
@@ -138,6 +266,7 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="d-flex flex-stack">
                                         <!--begin::Label-->
@@ -150,8 +279,8 @@
                                         <!--begin::Switch-->
                                         <label class="form-check form-switch form-check-custom form-check-solid">
                                             <!--begin::Input-->
-                                            <input class="form-check-input" name="status" type="checkbox" value="1"
-                                                {{ old('status',$batch->status) == 1 ? 'checked' : '' }}>
+                                            <input class="form-check-input" name="status" type="checkbox"
+                                                value="1" {{ old('status',$ourLeader->status) == 1 ? 'checked' : '' }}>
                                             <!--end::Input-->
                                             <!--begin::Label-->
                                             <span class="form-check-label fw-semibold text-muted">Yes</span>
@@ -170,9 +299,11 @@
                             </div>
                             <!--end::Input group-->
                             <div class="card-footer d-flex justify-content-end py-6 px-9">
-                                <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
-                                <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Update
-                                    Batch</button>
+                                <button type="reset"
+                                    class="btn btn-light btn-active-light-primary me-2">Discard</button>
+                                <button type="submit" class="btn btn-primary"
+                                    id="kt_account_profile_details_submit">Update
+                                    Leader</button>
                             </div>
                         </form>
                     </div>
@@ -189,11 +320,6 @@
 @endsection
 @push('js')
     <!--CKEditor Build Bundles:: Only include the relevant bundles accordingly-->
-    {{-- <script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-inline.bundle.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-balloon.bundle.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-balloon-block.bundle.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-document.bundle.js')}}"></script> --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
