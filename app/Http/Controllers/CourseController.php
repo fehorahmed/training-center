@@ -6,6 +6,8 @@ use App\Models\Course;
 use App\Models\CourseCategory;
 use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 use Yajra\DataTables\Facades\DataTables;
 
 class CourseController extends Controller
@@ -54,6 +56,7 @@ class CourseController extends Controller
             'name' => 'required|string|max:255|unique:courses,name',
             'course_category' => 'nullable|numeric',
             'details' => 'required|string|max:10000',
+            'image' => 'required|image|mimes:jpeg,png,jpg|dimensions:ratio=1/1|max:300',
             'status' => 'nullable|boolean',
         ]);
 
@@ -62,6 +65,15 @@ class CourseController extends Controller
         $data->course_category_id = $request->course_category;
         $data->details = $request->details;
         $data->status = $request->status ? $request->status : 0;
+        if ($request->hasFile('image')) {
+            $upload = $request->file('image');
+            $image = Image::read($upload)
+                ->resize(100, 100);
+            $filename = time() . '.' . $upload->getClientOriginalExtension();
+            // $image->encodeByExtension($upload->getClientOriginalExtension()
+            Storage::disk('public')->put('course/' . $filename, $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70));
+            $data->image =$filename;
+        }
 
         if ($data->save()) {
 
@@ -99,6 +111,7 @@ class CourseController extends Controller
             'name' => 'required|string|max:255|unique:courses,name,' . $course->id,
             'course_category' => 'nullable|numeric',
             'details' => 'required|string|max:10000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:ratio=1/1|max:300',
             'status' => 'nullable|boolean',
         ]);
 
@@ -106,6 +119,19 @@ class CourseController extends Controller
         $course->course_category_id = $request->course_category;
         $course->details = $request->details;
         $course->status = $request->status ? $request->status : 0;
+        if ($request->hasFile('image')) {
+            // Delete the old image if it exists
+            if ($course->image && Storage::disk('public')->exists('course/' . $course->image)) {
+                Storage::disk('public')->delete('course/' . $course->image);
+            }
+            $upload = $request->file('image');
+            $image = Image::read($upload)
+                ->resize(100, 100);
+            $filename = time() . '.' . $upload->getClientOriginalExtension();
+            // $image->encodeByExtension($upload->getClientOriginalExtension()
+            Storage::disk('public')->put('course/' . $filename, $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70));
+            $course->image =$filename;
+        }
 
         if ($course->save()) {
             Flasher::success('Course Updated Successfully.');

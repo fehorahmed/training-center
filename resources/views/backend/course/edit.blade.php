@@ -77,7 +77,7 @@
                     <!--begin::Card body-->
                     <div class="card-body py-4">
                         <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST"
-                            action="{{ route('course.update',$course->id) }}" enctype="multipart/form-data">
+                            action="{{ route('course.update', $course->id) }}" enctype="multipart/form-data">
                             <!--begin::Modal header-->
                             @csrf
                             <!--end::Modal header-->
@@ -100,7 +100,7 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="text" class="form-control form-control-solid" placeholder=""
-                                                name="name" id="name" value="{{ old('name',$course->name) }}">
+                                                name="name" id="name" value="{{ old('name', $course->name) }}">
                                             <!--end::Input-->
                                             @error('name')
                                                 <div class="fv-plugins-message-container invalid-feedback">
@@ -118,7 +118,7 @@
                                                 <option value="">Select Course Category</option>
                                                 @foreach ($course_categories as $category)
                                                     <option value="{{ $category->id }}"
-                                                        {{ old('course_category',$course->course_category_id) == $category->id ? 'selected' : '' }}>
+                                                        {{ old('course_category', $course->course_category_id) == $category->id ? 'selected' : '' }}>
                                                         {{ $category->name }}</option>
                                                 @endforeach
 
@@ -132,11 +132,81 @@
                                             @enderror
                                         </div>
                                         <!--end::Hint-->
+                                        <div class="col-md-6 mt-3">
+                                            <div
+                                                class="fv-row mb-10 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                                                <!--begin::Label-->
+                                                <label class="d-block fw-semibold fs-6 mb-5">
+                                                    <span class="required">Image</span>
+                                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                                        title="E.g. Select an png image dimension ratio is 1:1."></i>
+                                                </label>
+                                                <!--end::Label-->
+                                                <!--begin::Image input placeholder-->
+                                                <style>
+                                                    .image-input-placeholder {
+                                                        background-image: url({{ asset('storage/course/'.$course->image) }});
+                                                    }
+
+                                                    [data-theme="dark"] .image-input-placeholder {
+                                                        background-image: url({{ asset('storage/course/'.$course->image) }});
+                                                    }
+                                                </style>
+                                                <!--end::Image input placeholder-->
+                                                <!--begin::Image input-->
+                                                <div class="image-input image-input-empty image-input-outline image-input-placeholder"
+                                                    data-kt-image-input="true">
+                                                    <!--begin::Preview existing avatar-->
+                                                    <div class="image-input-wrapper w-125px h-125px"></div>
+                                                    <!--end::Preview existing avatar-->
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                                        aria-label="Change avatar" data-bs-original-title="Change avatar"
+                                                        data-kt-initialized="1">
+                                                        <i class="bi bi-pencil-fill fs-7"></i>
+                                                        <!--begin::Inputs-->
+                                                        <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                                                        <input type="hidden" name="avatar_remove">
+                                                        <!--end::Inputs-->
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Cancel-->
+                                                    <span
+                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                                        aria-label="Cancel avatar" data-bs-original-title="Cancel avatar"
+                                                        data-kt-initialized="1">
+                                                        <i class="bi bi-x fs-2"></i>
+                                                    </span>
+                                                    <!--end::Cancel-->
+                                                    <!--begin::Remove-->
+                                                    <span
+                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip"
+                                                        aria-label="Remove avatar" data-bs-original-title="Remove avatar"
+                                                        data-kt-initialized="1">
+                                                        <i class="bi bi-x fs-2"></i>
+                                                    </span>
+                                                    <!--end::Remove-->
+                                                </div>
+                                                <!--end::Image input-->
+                                                <!--begin::Hint-->
+                                                @error('image')
+                                                    <div class="fv-plugins-message-container invalid-feedback">
+                                                        <div>{{ $message }}
+                                                        </div>
+                                                    </div>
+                                                @enderror
+                                                <!--end::Hint-->
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="fv-row mb-5">
                                         <label for="details" class="required fs-5 fw-semibold mb-2"> Course
                                             Details</label>
-                                       <textarea name="details" id="details" cols="30" rows="10">{{old('details',$course->details)}}</textarea>
+                                        <textarea name="details" id="details" cols="30" rows="10">{{ old('details', $course->details) }}</textarea>
                                         <!--begin::Hint-->
                                         @error('details')
                                             <div class="fv-plugins-message-container invalid-feedback">
@@ -162,7 +232,8 @@
                                                 <label class="form-check form-switch form-check-custom form-check-solid">
                                                     <!--begin::Input-->
                                                     <input class="form-check-input" name="status" type="checkbox"
-                                                        value="1" {{ old('status',$course->status) == 1 ? 'checked' : '' }}>
+                                                        value="1"
+                                                        {{ old('status', $course->status) == 1 ? 'checked' : '' }}>
                                                     <!--end::Input-->
                                                     <!--begin::Label-->
                                                     <span class="form-check-label fw-semibold text-muted">Yes</span>
@@ -212,21 +283,21 @@
     </div>
 @endsection
 @push('js')
-<!--CKEditor Build Bundles:: Only include the relevant bundles accordingly-->
-{{-- <script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
+    <!--CKEditor Build Bundles:: Only include the relevant bundles accordingly-->
+    {{-- <script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
 <script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-inline.bundle.js')}}"></script>
 <script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-balloon.bundle.js')}}"></script>
 <script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-balloon-block.bundle.js')}}"></script>
 <script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-document.bundle.js')}}"></script> --}}
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-    .create(document.querySelector('#details'))
-    .then(editor => {
-        console.log(editor);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-</script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#details'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endpush
