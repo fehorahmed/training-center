@@ -205,7 +205,7 @@
                 @foreach ($courses as $course)
                     <!-- Start Category Box Layout  -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <a class="rbt-cat-box rbt-cat-box-1 text-center" href="#">
+                        <a class="rbt-cat-box rbt-cat-box-1 text-center" href="{{ route('course-view', $course->name) }}">
                             <div class="inner">
                                 <div class="icons">
                                     <img src="{{ $course->image ? asset('storage/course/' . $course->image) : asset('assets/frontend/images/category/web-design.png') }}"

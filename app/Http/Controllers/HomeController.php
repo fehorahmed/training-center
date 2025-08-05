@@ -20,4 +20,12 @@ class HomeController extends Controller
     public function contactUs(){
         return view('frontend.contact_us');
     }
+    public function courseView($course){
+        $course = Course::where('name', $course)->firstOrFail();
+        if (!$course || $course->status != 1) {
+            abort(404);
+        }
+
+        return view('frontend.course_view', compact('course'));
+    }
 }
