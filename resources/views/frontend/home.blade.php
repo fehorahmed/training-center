@@ -235,7 +235,7 @@
                 <div class="col-lg-12">
                     <div class="section-title text-center">
                         <span class="subtitle bg-secondary-opacity">Top Popular Course</span>
-                        <h2 class="title">Histudy Course student <br /> can join with us.</h2>
+                        <h2 class="title">BD Skill IT Course student <br /> can join with us.</h2>
                     </div>
                 </div>
             </div>
@@ -471,7 +471,7 @@
                     <div class="inner pl--50 pl_sm--0 pl_md--0">
                         <div class="section-title text-start">
                             <span class="subtitle bg-coral-opacity">Know About Us</span>
-                            <h2 class="title">Know About Histudy <br /> Learning Platform</h2>
+                            <h2 class="title">Know About BD Skill IT <br /> Learning Platform</h2>
                         </div>
 
                         <p class="description mt--30">Far far away, behind the word mountains, far from the countries
@@ -533,7 +533,7 @@
                                     <div class="rbt-category mb--20">
                                         <a href="#">New Collection</a>
                                     </div>
-                                    <h4 class="title mb--15">Online Courses from Histudy</h4>
+                                    <h4 class="title mb--15">Online Courses from BD Skill IT</h4>
                                     <p class="mb--15">Top instructors from around the world</p>
                                 </div>
                             </div>
@@ -559,7 +559,7 @@
                                     <div class="rbt-category mb--20">
                                         <a href="#">Top Teacher</a>
                                     </div>
-                                    <h4 class="title mb--10">Free Online Courses from Histudy School To Education</h4>
+                                    <h4 class="title mb--10">Free Online Courses from BD Skill IT School To Education</h4>
                                     <p class="mb--15">Top instructors from around the world</p>
                                     <div class="read-more-btn">
                                         <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm" href="#">
@@ -672,7 +672,7 @@
                     <div class="col-lg-12">
                         <div class="section-title text-center mb--10">
                             <span class="subtitle bg-primary-opacity">EDUCATION FOR EVERYONE</span>
-                            <h2 class="title">People like histudy education. <br /> No joking - here’s the proof!
+                            <h2 class="title">People like BD Skill IT education. <br /> No joking - here’s the proof!
                             </h2>
                         </div>
                     </div>
@@ -715,7 +715,7 @@
                                 <img src="{{ asset('assets/frontend/images/icons/google.png') }}" alt="Clint Images">
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
+                                <p class="subtitle-3">BD Skill IT education, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
@@ -789,7 +789,7 @@
                                 <img src="{{ asset('assets/frontend/images/icons/bing.png') }}" alt="Clint Images">
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">Like this histudy, vulputate at sapien sit amet,
+                                <p class="subtitle-3">Like this BD Skill IT, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
@@ -944,7 +944,7 @@
                                 <img src="{{ asset('assets/frontend/images/icons/google.png') }}" alt="Clint Images">
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
+                                <p class="subtitle-3">BD Skill IT education, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
@@ -1018,7 +1018,7 @@
                                 <img src="{{ asset('assets/frontend/images/icons/hubs.png') }}" alt="Clint Images">
                             </div>
                             <div class="description">
-                                <p class="subtitle-3">Like this histudy, vulputate at sapien sit amet,
+                                <p class="subtitle-3">Like this BD Skill IT, vulputate at sapien sit amet,
                                     auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
@@ -1159,7 +1159,7 @@
                                     <div class="single-slide">
                                         <div class="rbt-card event-grid-card variation-01 rbt-hover">
                                             <div class="rbt-card-img">
-                                                <a href="event-details.html">
+                                                <a href="{{ route('leader-view', $leader->slug) }}">
                                                     <img src="{{ asset('storage/leader/' . $leader->image) }}"
                                                         alt="Card image">
                                                     <div class="rbt-badge-3 bg-white">
@@ -1172,12 +1172,12 @@
 
                                                 </ul>
                                                 <h4 class="rbt-card-title"><a
-                                                        href="event-details.html">{{ $leader->name }}</a>
+                                                        href="{{ route('leader-view', $leader->slug) }}">{{ $leader->name }}</a>
                                                 </h4>
                                                 <p>{{ $leader->short_description }}</p>
                                                 <div class="read-more-btn">
                                                     <a class="rbt-btn btn-border hover-icon-reverse btn-sm radius-round"
-                                                        href="event-details.html">
+                                                        href="{{ route('leader-view', $leader->slug) }}">
                                                         <span class="icon-reverse-wrapper">
                                                             <span class="btn-text">Details</span>
                                                             <span class="btn-icon"><i
@@ -1252,7 +1252,7 @@
                                             <span class="location">CO Miego, AD,USA</span>
                                         </span>
                                     </div>
-                                    <p>Histudy The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+                                    <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
                                         below for those interested.</p>
                                     <ul class="social-icon social-default mt--20 justify-content-start">
                                         <li><a href="https://www.facebook.com/">
@@ -1390,7 +1390,7 @@
                                             <span class="location">CO Miego, AD,USA</span>
                                         </span>
                                     </div>
-                                    <p>Histudy The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+                                    <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
                                         below for those interested.</p>
                                     <ul class="social-icon social-default mt--20 justify-content-start">
                                         <li><a href="https://www.facebook.com/">
@@ -1436,7 +1436,7 @@
                                             <span class="location">CO Miego, AD,USA</span>
                                         </span>
                                     </div>
-                                    <p>Histudy The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+                                    <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
                                         below for those interested.</p>
                                     <ul class="social-icon social-default mt--20 justify-content-start">
                                         <li><a href="https://www.facebook.com/">
@@ -1482,7 +1482,7 @@
                                             <span class="location">CO Miego, AD,USA</span>
                                         </span>
                                     </div>
-                                    <p>Histudy The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+                                    <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
                                         below for those interested.</p>
                                     <ul class="social-icon social-default mt--20 justify-content-start">
                                         <li><a href="https://www.facebook.com/">
@@ -1730,7 +1730,7 @@
                 <div class="col-lg-12">
                     <div class="inner text-center">
                         <div class="section-title text-center">
-                            <span class="subtitle bg-white-opacity">Get Latest Histudy Update</span>
+                            <span class="subtitle bg-white-opacity">Get Latest BD Skill IT Update</span>
                             <h2 class="title color-white"><strong>Subscribe</strong> Our Newsletter</h2>
                             <p class="description color-white mt--20">Lorem ipsum, dolor sit amet consectetur
                                 adipisicing elit. Ipsam explicabo sit est eos earum reprehenderit inventore nam autem

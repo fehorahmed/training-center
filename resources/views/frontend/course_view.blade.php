@@ -2,7 +2,7 @@
 
 @section('content')
    <!-- Start breadcrumb Area -->
-    <div class="rbt-breadcrumb-default rbt-breadcrumb-style-3">
+    <div class="rbt-breadcrumb-default rbt-breadcrumb-style-3" style="min-height: 300px;">
         <div class="breadcrumb-inner breadcrumb-dark">
             <img src="{{asset('assets/frontend/images/bg/bg-image-10.jpg')}}" alt="Education Images">
         </div>
@@ -18,10 +18,10 @@
                             <li class="rbt-breadcrumb-item active">{{$course->name}}</li>
                         </ul>
                         <h2 class="title">{{$course->name}}</h2>
-                        <p class="description">Master Python by building 100 projects in 100 days. Learn data
-                            science, automation, build websites, games and apps!</p>
+                        {{-- <p class="description">Master Python by building 100 projects in 100 days. Learn data
+                            science, automation, build websites, games and apps!</p> --}}
 
-                        <div class="d-flex align-items-center mb--20 flex-wrap rbt-course-details-feature">
+                        {{-- <div class="d-flex align-items-center mb--20 flex-wrap rbt-course-details-feature">
 
                             <div class="feature-sin best-seller-badge">
                                 <span class="rbt-badge-2">
@@ -47,9 +47,9 @@
                                 <span>616,029 students</span>
                             </div>
 
-                        </div>
+                        </div> --}}
 
-                        <div class="rbt-author-meta mb--20">
+                        {{-- <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
                                 <a href="#">
                                     <img src="{{asset('assets/frontend/images/client/avatar-02.png')}}" alt="Sophia Jaymes">
@@ -64,7 +64,7 @@
                             <li><i class="feather-calendar"></i>Last updated 12/2024</li>
                             <li><i class="feather-globe"></i>English</li>
                             <li><i class="feather-award"></i>Certified Course</li>
-                        </ul>
+                        </ul> --}}
 
                     </div>
                 </div>
@@ -80,33 +80,33 @@
                 <div class="col-lg-12">
                     <div class="course-details-content">
                         <div class="rbt-course-feature-box rbt-shadow-box thuumbnail">
-                            <img class="w-100" src="{{asset('assets/frontend/images/course/course-01.jpg')}}" alt="Card image">
+                            <img class="w-10" src="{{ $course->image ? asset('storage/course/' . $course->image) : asset('assets/frontend/images/course/course-01.jpg') }}" alt="Card image">
                         </div>
 
                         <div class="rbt-inner-onepage-navigation sticky-top mt--30">
                             <nav class="mainmenu-nav onepagenav">
                                 <ul class="mainmenu">
-                                    <li class="current">
+                                    {{-- <li class="current">
                                         <a href="#overview">Overview</a>
                                     </li>
                                     <li>
                                         <a href="#coursecontent">Course Content</a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a href="#details">Details</a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="#intructor">Intructor</a>
                                     </li>
                                     <li>
                                         <a href="#review">Review</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </nav>
                         </div>
 
                         <!-- Start Course Feature Box  -->
-                        <div class="rbt-course-feature-box overview-wrapper rbt-shadow-box mt--30 has-show-more" id="overview">
+                        {{-- <div class="rbt-course-feature-box overview-wrapper rbt-shadow-box mt--30 has-show-more" id="overview">
                             <div class="rbt-course-feature-inner has-show-more-inner-content">
                                 <div class="section-title">
                                     <h4 class="rbt-title-style-3">What you'll learn</h4>
@@ -569,53 +569,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- End Course Content  -->
 
                         <!-- Start Course Feature Box  -->
                         <div class="rbt-course-feature-box rbt-shadow-box details-wrapper mt--30" id="details">
                             <div class="row g-5">
                                 <!-- Start Feture Box  -->
-                                <div class="col-lg-6">
-                                    <div class="section-title">
-                                        <h4 class="rbt-title-style-3 mb--20">Requirements</h4>
-                                    </div>
-                                    <ul class="rbt-list-style-1">
-                                        <li><i class="feather-check"></i>Become an advanced, confident, and modern
-                                            JavaScript developer from scratch.</li>
-                                        <li><i class="feather-check"></i>Have an intermediate skill level of Python
-                                            programming.</li>
-                                        <li><i class="feather-check"></i>Have a portfolio of various data analysis
-                                            projects.</li>
-                                        <li><i class="feather-check"></i>Use the numpy library to create and manipulate
-                                            arrays.</li>
-                                    </ul>
-                                </div>
-                                <!-- End Feture Box  -->
-
-                                <!-- Start Feture Box  -->
-                                <div class="col-lg-6">
-                                    <div class="section-title">
-                                        <h4 class="rbt-title-style-3 mb--20">Description</h4>
-                                    </div>
-                                    <ul class="rbt-list-style-1">
-                                        <li><i class="feather-check"></i>Use the Jupyter Notebook Environment.
-                                            JavaScript developer from scratch.</li>
-                                        <li><i class="feather-check"></i>Use the pandas module with Python to create and
-                                            structure data.</li>
-                                        <li><i class="feather-check"></i>Have a portfolio of various data analysis
-                                            projects.</li>
-                                        <li><i class="feather-check"></i>Create data visualizations using matplotlib and
-                                            the seaborn.</li>
-                                    </ul>
-                                </div>
+                                {!!$course->details!!}
                                 <!-- End Feture Box  -->
                             </div>
                         </div>
                         <!-- End Course Feature Box  -->
 
                         <!-- Start Intructor Area  -->
-                        <div class="rbt-instructor rbt-shadow-box intructor-wrapper mt--30" id="intructor">
+                        {{-- <div class="rbt-instructor rbt-shadow-box intructor-wrapper mt--30" id="intructor">
                             <div class="about-author border-0 pb--0 pt--0">
                                 <div class="section-title mb--30">
                                     <h4 class="rbt-title-style-3">Instructor</h4>
@@ -826,10 +794,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- End Edu Review List  -->
 
-                        <div class="about-author-list rbt-shadow-box featured-wrapper mt--30 has-show-more">
+                        {{-- <div class="about-author-list rbt-shadow-box featured-wrapper mt--30 has-show-more">
                             <div class="section-title">
                                 <h4 class="rbt-title-style-3">Featured review</h4>
                             </div>
@@ -1028,9 +996,9 @@
                                 </div>
                             </div>
                             <div class="rbt-show-more-btn">Show More</div>
-                        </div>
+                        </div> --}}
                     </div>
-                    <div class="related-course mt--60">
+                    {{-- <div class="related-course mt--60">
                         <div class="row g-5 align-items-end mb--40">
                             <div class="col-lg-8 col-md-8 col-12">
                                 <div class="section-title">
@@ -1168,7 +1136,7 @@
                             </div>
                             <!-- End Single Card  -->
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
@@ -1181,7 +1149,7 @@
         </div>
     </div>
 
-    <div class="rbt-related-course-area bg-color-white pt--60 rbt-section-gapBottom">
+    {{-- <div class="rbt-related-course-area bg-color-white pt--60 rbt-section-gapBottom">
         <div class="container">
             <div class="section-title mb--30">
                 <span class="subtitle bg-primary-opacity">More Similar Courses</span>
@@ -1375,7 +1343,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Start Course Action Bottom  -->
     <div class="rbt-course-action-bottom">

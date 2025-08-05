@@ -28,4 +28,12 @@ class HomeController extends Controller
 
         return view('frontend.course_view', compact('course'));
     }
+    public function leaderView($leader){
+        $leader = OurLeader::where('slug', $leader)->firstOrFail();
+        if (!$leader || $leader->status != 1) {
+            abort(404);
+        }
+
+        return view('frontend.leader_view', compact('leader'));
+    }
 }

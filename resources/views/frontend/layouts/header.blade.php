@@ -141,7 +141,7 @@
                     <div class="header-left rbt-header-content">
                         <div class="header-info">
                             <div class="logo logo-dark">
-                                <a href="index.html">
+                                <a href="{{route('home')}}">
                                     <img src="{{ asset('assets/frontend/images/logo/web_logo.jpeg') }}"
                                         alt="Education Logo Images">
                                 </a>

@@ -113,7 +113,6 @@ class OurLeaderController extends Controller
      */
     public function update(Request $request, OurLeader $ourLeader)
     {
-
         $request->validate([
             'name' => 'required|string|max:255|unique:our_leaders,name,' . $ourLeader->id,
             'designation' => 'required|string|max:255',
