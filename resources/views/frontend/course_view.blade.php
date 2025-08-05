@@ -11,7 +11,7 @@
                 <div class="col-lg-8">
                     <div class="content text-start">
                         <ul class="page-list">
-                            <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="rbt-breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                             <li>
                                 <div class="icon-right"><i class="feather-chevron-right"></i></div>
                             </li>
