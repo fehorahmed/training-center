@@ -3,6 +3,7 @@
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GlobalConfigController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OurLeaderController;
@@ -61,6 +62,15 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/store', [OurLeaderController::class, 'store'])->name('leader.store');
         Route::get('/{ourLeader}/edit', [OurLeaderController::class, 'edit'])->name('leader.edit');
         Route::post('/{ourLeader}/update', [OurLeaderController::class, 'update'])->name('leader.update');
+    });
+
+    Route::prefix('gallery')->group(function(){
+        Route::get('/', [GalleryController::class, 'index'])->name('admin.gallery.index');
+        Route::get('/all', [GalleryController::class, 'getData'])->name('gallery.data');
+        Route::get('/create', [GalleryController::class, 'create'])->name('gallery.create');
+        Route::post('/store', [GalleryController::class, 'store'])->name('gallery.store');
+        Route::get('/{gallery}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
+        Route::post('/{gallery}/update', [GalleryController::class, 'update'])->name('gallery.update');
     });
 
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');
