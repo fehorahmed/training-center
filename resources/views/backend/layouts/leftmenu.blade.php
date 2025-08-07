@@ -115,6 +115,9 @@
                         'admin.leader.index',
                         'leader.create',
                         'leader.edit',
+                        'admin.gallery.index',
+                        'gallery.create',
+                        'gallery.edit',
                     ];
                 @endphp
                 <div data-kt-menu-trigger="click"
@@ -195,6 +198,7 @@
                         @php
                             $sub_menus = ['admin.leader.index', 'leader.create', 'leader.edit'];
                         @endphp
+
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
@@ -207,14 +211,17 @@
                             <!--end:Menu link-->
                         </div>
                         <!--end:Menu item-->
+                         @php
+                            $sub_menus = ['admin.gallery.index', 'gallery.create', 'gallery.edit'];
+                        @endphp
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="pages/user-profile/followers.html">
+                            <a class="menu-link {{ in_array(Route::currentRouteName(), $sub_menus) ? 'active' : '' }}" href="{{route('admin.gallery.index')}}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Followers</span>
+                                <span class="menu-title">Gallery</span>
                             </a>
                             <!--end:Menu link-->
                         </div>
