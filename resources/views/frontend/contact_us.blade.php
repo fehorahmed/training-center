@@ -34,7 +34,9 @@
                         </div>
                         <div class="inner">
                             <h4 class="title">Our Email Address</h4>
-                            <p><a href="mailto:{{getGlobalConfig('contact_email')}}">{{getGlobalConfig('contact_email')}}</a></p>
+                            <p><a
+                                    href="mailto:{{ getGlobalConfig('contact_email') }}">{{ getGlobalConfig('contact_email') }}</a>
+                            </p>
                             {{-- <p><a href="mailto:example@gmail.com">example@gmail.com</a></p> --}}
                         </div>
                     </div>
@@ -47,7 +49,7 @@
                         </div>
                         <div class="inner">
                             <h4 class="title">Our Location</h4>
-                            {{getGlobalConfig('contact_address')}}
+                            {{ getGlobalConfig('contact_address') }}
                         </div>
                     </div>
                 </div>
@@ -60,7 +62,8 @@
             <div class="row g-5">
                 <div class="col-lg-6">
                     <div class="thumbnail">
-                        <img class="w-100 radius-6" src="{{asset('assets/frontend/images/about/contact.jpg')}}" alt="Contact Images">
+                        <img class="w-100 radius-6" src="{{ asset('assets/frontend/images/about/contact.jpg') }}"
+                            alt="Contact Images">
                     </div>
                 </div>
 
@@ -70,27 +73,38 @@
                             <span class="subtitle bg-primary-opacity">EDUCATION FOR EVERYONE</span>
                         </div>
                         <h3 class="title">Get a Free Course You Can Contact With Me</h3>
-                        <form id="contact-form" method="POST"
-                            action="https://histudy.pixcelsthemes.com/livepreview/histudy/mail.php"
-                            class="rainbow-dynamic-form max-width-auto">
+                        <form  method="POST" action="{{ route('contact-us') }}" class="rainbow-dynamic-form max-width-auto">
+                            @csrf
                             <div class="form-group">
-                                <input name="contact-name" id="contact-name" type="text">
+                                <input name="name" id="name" value="{{ old('name') }}" type="text">
                                 <label>Name</label>
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                                 <span class="focus-border"></span>
                             </div>
                             <div class="form-group">
-                                <input name="contact-phone" type="email">
+                                <input name="email" type="email" value="{{ old('email') }}">
                                 <label>Email</label>
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                                 <span class="focus-border"></span>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="subject" name="subject">
+                                <input type="text" id="subject" name="subject" value="{{ old('subject') }}">
                                 <label>Your Subject</label>
+                                @error('subject')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                                 <span class="focus-border"></span>
                             </div>
                             <div class="form-group">
-                                <textarea name="contact-message" id="contact-message"></textarea>
+                                <textarea name="message" id="message">{{ old('message') }}</textarea>
                                 <label>Message</label>
+                                @error('message')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                                 <span class="focus-border"></span>
                             </div>
                             <div class="form-submit-group">

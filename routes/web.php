@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
+Route::post('/contact-us', [HomeController::class, 'contactUsStore']);
 Route::get('/course-view/{course}', [HomeController::class, 'courseView'])->name('course-view');
 Route::get('/leader-view/{leader}', [HomeController::class, 'leaderView'])->name('leader-view');
 Route::get('/gallery', [HomeController::class, 'galleryView'])->name('gallery-view');

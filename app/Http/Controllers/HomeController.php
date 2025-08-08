@@ -43,4 +43,22 @@ class HomeController extends Controller
 
         return view('frontend.gallery_view', compact('gallery'));
     }
+    public function contactUsStore(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        $message = new \App\Models\ContactUsMessage();
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->subject = $request->subject;
+        $message->message = $request->message;
+        $message->status = 0; // default status is unread
+        $message->save();
+
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
+    }
 }
