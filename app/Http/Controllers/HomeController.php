@@ -38,7 +38,7 @@ class HomeController extends Controller
         return view('frontend.leader_view', compact('leader'));
     }
     public function galleryView(){
-        $gallery = Gallery::where('status', 1)->get();
+        $gallery = Gallery::where('status', 1)->orderBy('serial')->get();
 
 
         return view('frontend.gallery_view', compact('gallery'));

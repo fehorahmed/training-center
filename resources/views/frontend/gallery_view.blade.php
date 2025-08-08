@@ -29,7 +29,7 @@
                     class="child-gallery-single col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="rbt-gallery">
                         <img class="w-100" src="{{ asset('storage/gallery/'.$item->image) }}"
-                            alt="Gallery Images">
+                            alt="{{$item->title}}">
                     </div>
                 </a>
             @endforeach
