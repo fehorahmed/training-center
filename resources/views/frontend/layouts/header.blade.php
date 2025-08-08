@@ -1204,6 +1204,12 @@
                                     </div> --}}
                                     <!-- End Mega Menu  -->
                                 </li>
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="{{route('gallery-view')}}">Gallery
+                                        {{-- <i class="feather-chevron-down"></i> --}}
+                                    </a>
+
+                                </li>
 
                                 <li class="with-megamenu has-menu-child-item position-static">
                                     <a href="#">Blog

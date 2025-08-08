@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Gallery;
 use App\Models\OurLeader;
 use Illuminate\Http\Request;
 
@@ -35,5 +36,11 @@ class HomeController extends Controller
         }
 
         return view('frontend.leader_view', compact('leader'));
+    }
+    public function galleryView(){
+        $gallery = Gallery::where('status', 1)->get();
+
+
+        return view('frontend.gallery_view', compact('gallery'));
     }
 }

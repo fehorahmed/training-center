@@ -17,6 +17,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
 Route::get('/course-view/{course}', [HomeController::class, 'courseView'])->name('course-view');
 Route::get('/leader-view/{leader}', [HomeController::class, 'leaderView'])->name('leader-view');
+Route::get('/gallery', [HomeController::class, 'galleryView'])->name('gallery-view');
 Route::get('admin/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
