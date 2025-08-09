@@ -108,7 +108,7 @@
                                 <span class="focus-border"></span>
                             </div>
                             <div class="form-submit-group">
-                                <button name="submit" type="submit" id="submit"
+                                <button name="submit" type="submit"
                                     class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
                                     <span class="icon-reverse-wrapper">
                                         <span class="btn-text">GET IT NOW</span>

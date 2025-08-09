@@ -34,6 +34,11 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/plugins/jodit.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/styles.css') }}">
+    <style>
+        .fl-wrapper{
+            z-index: 9999 !important;
+        }
+    </style>
 </head>
 
 <body class="rbt-header-sticky">

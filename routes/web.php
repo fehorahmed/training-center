@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\ContactUsMessageController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GalleryController;
@@ -74,6 +75,12 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/{gallery}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
         Route::post('/{gallery}/update', [GalleryController::class, 'update'])->name('gallery.update');
     });
+
+     Route::prefix('contact')->group(function(){
+        Route::get('/', [ContactUsMessageController::class, 'index'])->name('admin.contact.index');
+        Route::get('/all', [ContactUsMessageController::class, 'getData'])->name('contact.data');
+        Route::get('/create', [ContactUsMessageController::class, 'create'])->name('contact.create');
+     });
 
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');
     Route::post('/global-config', [GlobalConfigController::class, 'update']);
