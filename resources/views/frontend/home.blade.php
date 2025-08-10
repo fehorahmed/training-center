@@ -50,7 +50,7 @@
                                     <div class="swiper-slide">
                                         <div class="rbt-card variation-01 rbt-hover">
                                             <div class="rbt-card-img">
-                                                <a href="course-details.html">
+                                                <a href="{{route('course-view',$course->name)}}">
                                                     <img src="{{ asset('assets/frontend/images/course/course-01.jpg') }}"
                                                         alt="Card image">
                                                     <div class="rbt-badge-3 bg-white">
@@ -64,7 +64,7 @@
                                                     <li><i class="feather-book"></i>{{ count($course->batches) }} Batches</li>
                                                     {{-- <li><i class="feather-users"></i>50 Students</li> --}}
                                                 </ul>
-                                                <h4 class="rbt-card-title"><a href="course-details.html">{{$course->name}}</a>
+                                                <h4 class="rbt-card-title"><a href="{{route('course-view',$course->name)}}">{{$course->name}}</a>
                                                 </h4>
                                                 <p class="rbt-card-text">It is a long established fact that a reader
                                                     will be distracted.</p>
@@ -1519,7 +1519,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="read-more-btn text-start text-md-end">
-                        <a class="rbt-btn btn-gradient hover-icon-reverse" href="blog.html">
+                        <a class="rbt-btn btn-gradient hover-icon-reverse" href="#">
                             <div class="icon-reverse-wrapper">
                                 <span class="btn-text">See All Articles</span>
                                 <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -1536,15 +1536,15 @@
                     data-sal-duration="800">
                     <div class="rbt-card variation-02 height-330 rbt-hover">
                         <div class="rbt-card-img">
-                            <a href="blog-details.html">
+                            <a href="#">
                                 <img src="{{ asset('assets/frontend/images/blog/blog-card-01.jpg') }}" alt="Card image">
                             </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h3 class="rbt-card-title"><a href="blog-details.html">React</a></h3>
+                            <h3 class="rbt-card-title"><a href="#">React</a></h3>
                             <p class="rbt-card-text">It is a long established fact that a reader.</p>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Learn More<i><svg
+                                <a class="transparent-button" href="#">Learn More<i><svg
                                             width="17" height="12" xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
@@ -1562,15 +1562,15 @@
                     <!-- Start Single Card  -->
                     <div class="rbt-card card-list variation-02 rbt-hover">
                         <div class="rbt-card-img">
-                            <a href="blog-details.html">
+                            <a href="#">
                                 <img src="{{ asset('assets/frontend/images/blog/blog-card-02.jpg') }}"
                                     alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Why Is Education So Famous?</a>
+                            <h5 class="rbt-card-title"><a href="#">Why Is Education So Famous?</a>
                             </h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Read Article<i><svg
+                                <a class="transparent-button" href="#">Read Article<i><svg
                                             width="17" height="12" xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
@@ -1585,15 +1585,15 @@
                     <!-- Start Single Card  -->
                     <div class="rbt-card card-list variation-02 rbt-hover mt--30">
                         <div class="rbt-card-img">
-                            <a href="blog-details.html">
+                            <a href="#">
                                 <img src="{{ asset('assets/frontend/images/blog/blog-card-03.jpg') }}"
                                     alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Difficult Things About
+                            <h5 class="rbt-card-title"><a href="#">Difficult Things About
                                     Education.</a></h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Read Article<i><svg
+                                <a class="transparent-button" href="#">Read Article<i><svg
                                             width="17" height="12" xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
@@ -1608,15 +1608,15 @@
                     <!-- Start Single Card  -->
                     <div class="rbt-card card-list variation-02 rbt-hover mt--30">
                         <div class="rbt-card-img">
-                            <a href="blog-details.html">
+                            <a href="#">
                                 <img src="{{ asset('assets/frontend/images/blog/blog-card-04.jpg') }}"
                                     alt="Card image"> </a>
                         </div>
                         <div class="rbt-card-body">
-                            <h5 class="rbt-card-title"><a href="blog-details.html">Education Is So Famous, But
+                            <h5 class="rbt-card-title"><a href="#">Education Is So Famous, But
                                     Why?</a></h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="blog-details.html">Read Article<i><svg
+                                <a class="transparent-button" href="#">Read Article<i><svg
                                             width="17" height="12" xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
