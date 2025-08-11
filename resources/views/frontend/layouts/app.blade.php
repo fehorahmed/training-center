@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex, follow">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="google-site-verification" content="FQ8shlF1KRPStdKkYCh6UR_0ueOXOzia4g-3xUkwBDk" />
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/frontend/images/favicon.jpeg') }}">
 
@@ -35,7 +35,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/styles.css') }}">
     <style>
-        .fl-wrapper{
+        .fl-wrapper {
             z-index: 9999 !important;
         }
     </style>
@@ -74,6 +74,19 @@
     <!-- JS
 ============================================ -->
     <!-- Modernizer JS -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HW22NG2ZC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6HW22NG2ZC');
+    </script>
     <script src="{{ asset('assets/frontend/js/vendor/modernizr.min.js') }}"></script>
     <!-- jQuery JS -->
     <script src="{{ asset('assets/frontend/js/vendor/jquery.js') }}"></script>
