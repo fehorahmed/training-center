@@ -9,6 +9,7 @@ use App\Http\Controllers\GlobalConfigController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OurLeaderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -81,6 +82,15 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/all', [ContactUsMessageController::class, 'getData'])->name('contact.data');
         Route::get('/create', [ContactUsMessageController::class, 'create'])->name('contact.create');
      });
+
+     Route::prefix('teacher')->group(function(){
+        Route::get('/', [TeacherController::class, 'index'])->name('admin.teacher.index');
+        Route::get('/all', [TeacherController::class, 'getData'])->name('teacher.data');
+        Route::get('/create', [TeacherController::class, 'create'])->name('teacher.create');
+        Route::post('/store', [TeacherController::class, 'store'])->name('teacher.store');
+        Route::get('/{ourLeader}/edit', [TeacherController::class, 'edit'])->name('teacher.edit');
+        Route::post('/{ourLeader}/update', [TeacherController::class, 'update'])->name('teacher.update');
+    });
 
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');
     Route::post('/global-config', [GlobalConfigController::class, 'update']);
