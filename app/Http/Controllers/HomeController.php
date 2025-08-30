@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Gallery;
 use App\Models\OurLeader;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,7 +17,10 @@ class HomeController extends Controller
         $leaders = OurLeader::where('status', 1)
             ->orderBy('created_at', 'desc')
             ->get();
-        return view('frontend.home', compact('courses', 'leaders'));
+        $teachers = Teacher::where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return view('frontend.home', compact('courses', 'leaders', 'teachers'));
     }
     public function contactUs(){
         return view('frontend.contact_us');

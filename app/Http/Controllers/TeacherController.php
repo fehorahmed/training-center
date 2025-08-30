@@ -52,12 +52,12 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255|unique:our_leaders,name',
+            'name' => 'required|string|max:255|unique:teachers,name',
             'subject' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'address' => 'nullable|string|max:255',
             'phone' => 'required|string|max:20',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg|dimensions:ratio=355/240|max:300',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|dimensions:ratio=260/348|max:400',
             'facebook' => 'nullable|url|max:255',
             'twitter' => 'nullable|url|max:255',
             'instagram' => 'nullable|url|max:255',
@@ -77,7 +77,7 @@ class TeacherController extends Controller
         if ($request->hasFile('image')) {
             $upload = $request->file('image');
             $image = Image::read($upload)
-                ->resize(355, 240);
+                ->resize(260, 348);
             $filename = time() . '.' . $upload->getClientOriginalExtension();
             // $image->encodeByExtension($upload->getClientOriginalExtension()
             Storage::disk('public')->put('teacher/' . $filename, $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70));
@@ -85,8 +85,8 @@ class TeacherController extends Controller
         }
         if ($teacher->save()) {
 
-            Flasher::success('Leader Created Successfully.');
-            return redirect()->route('admin.leader.index');
+            Flasher::success('Teacher Created Successfully.');
+            return redirect()->route('admin.teacher.index');
         } else {
             Flasher::error('Something went wrong');
             return redirect()->back()->withInput();
@@ -106,7 +106,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        return view('backend.teacher.edit', compact('teacher'));
     }
 
     /**
@@ -114,7 +114,49 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:teachers,name,' . $teacher->id,
+            'subject' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'address' => 'nullable|string|max:255',
+            'phone' => 'required|string|max:20',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|dimensions:ratio=260/348|max:400',
+            'facebook' => 'nullable|url|max:255',
+            'twitter' => 'nullable|url|max:255',
+            'instagram' => 'nullable|url|max:255',
+            "status" => 'nullable|boolean',
+        ]);
+
+        $teacher->name = $request->name;
+        $teacher->subject = $request->subject;
+        $teacher->email = $request->email;
+        $teacher->address = $request->address;
+        $teacher->phone = $request->phone;
+        $teacher->facebook = $request->facebook;
+        $teacher->twitter = $request->twitter;
+        $teacher->instagram = $request->instagram;
+        $teacher->status = $request->status ? 1 : 0;
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($teacher->image && Storage::disk('public')->exists('teacher/' . $teacher->image)) {
+                Storage::disk('public')->delete('teacher/' . $teacher->image);
+            }
+
+            $upload = $request->file('image');
+            $image = Image::read($upload)
+                ->resize(260, 348);
+            $filename = time() . '.' . $upload->getClientOriginalExtension();
+            Storage::disk('public')->put('teacher/' . $filename, $image->encodeByExtension($upload->getClientOriginalExtension(), quality: 70));
+            $teacher->image = $filename;
+        }
+        if ($teacher->save()) {
+
+            Flasher::success('Teacher Updated Successfully.');
+            return redirect()->route('admin.teacher.index');
+        } else {
+            Flasher::error('Something went wrong');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**

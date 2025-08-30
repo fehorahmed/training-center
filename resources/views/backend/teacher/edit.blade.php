@@ -12,7 +12,7 @@
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                        Edit Leader</h1>
+                        Edit Teacher</h1>
                     <!--end::Title-->
                     <!--begin::Breadcrumb-->
                     {{-- <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -37,7 +37,7 @@
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
                     <!--begin::Filter menu-->
                     <div class="d-flex">
-                        <a href="{{ route('admin.leader.index') }}" class="btn btn-icon btn-sm btn-info flex-shrink-0 ms-4">
+                        <a href="{{ route('admin.teacher.index') }}" class="btn btn-icon btn-sm btn-info flex-shrink-0 ms-4">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <span class="svg-icon svg-icon-3 me-1">
@@ -77,7 +77,7 @@
                     <!--begin::Card body-->
                     <div class="card-body py-4">
                         <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST"
-                            action="{{ route('leader.update',$ourLeader->id) }}" enctype="multipart/form-data">
+                            action="{{ route('teacher.update',$teacher->id) }}" enctype="multipart/form-data">
                             @csrf
                             <!--begin::Input group-->
                             <div class="row mb-6">
@@ -89,7 +89,7 @@
                                         </label>
                                         <!--end::Label-->
                                         <input type="text" class="form-control form-control-solid"
-                                            value="{{ old('name',$ourLeader->name) }}" placeholder="Enter Name" name="name">
+                                            value="{{ old('name',$teacher->name) }}" placeholder="Enter Name" name="name">
                                         @error('name')
                                             <div class="fv-plugins-message-container invalid-feedback">
                                                 {{ $message }}
@@ -102,30 +102,13 @@
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="required">Designation</span>
+                                            <span class="required">Subject</span>
                                         </label>
                                         <!--end::Label-->
                                         <input type="text" class="form-control form-control-solid"
-                                            value="{{ old('designation',$ourLeader->designation) }}" placeholder="Enter Designation"
-                                            name="designation">
-                                        @error('designation')
-                                            <div class="fv-plugins-message-container invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
-                                        <!--begin::Label-->
-                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="required">Short Designation</span>
-                                        </label>
-                                        <!--end::Label-->
-                                        <input type="text" class="form-control form-control-solid"
-                                            value="{{ old('short_designation',$ourLeader->short_designation) }}" placeholder="Enter Short Designation"
-                                            name="short_designation">
-                                        @error('short_designation')
+                                            value="{{ old('subject',$teacher->subject) }}" placeholder="Enter subject name"
+                                            name="subject">
+                                        @error('subject')
                                             <div class="fv-plugins-message-container invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -133,40 +116,23 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
-                                        <!--begin::Label-->
-                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="required">Short Description</span>
-                                        </label>
-                                        <!--end::Label-->
-                                        <textarea name="short_description" class="form-control form-control-solid" id="short_description"
-                                            placeholder="Enter Short Description" cols="30" rows="2">{{ old('short_description',$ourLeader->short_description) }}</textarea>
-
-                                        @error('short_description')
-                                            <div class="fv-plugins-message-container invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="fv-row mb-10 fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
                                         <!--begin::Label-->
                                         <label class="d-block fw-semibold fs-6 mb-5">
                                             <span class="">Image</span>
                                             <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                                title="E.g. Select an image dimension is width=355,height=240"></i>
+                                                title="E.g. Select an image ratio is = 260/348"></i>
                                         </label>
                                         <!--end::Label-->
                                         <!--begin::Image input placeholder-->
                                         <style>
                                             .image-input-placeholder {
-                                                background-image: url({{ asset('storage/leader/'.$ourLeader->image) }});
+                                                background-image: url({{ asset('storage/teacher/'.$teacher->image) }});
                                             }
 
                                             [data-theme="dark"] .image-input-placeholder {
-                                                background-image: url({{ asset('storage/leader/'.$ourLeader->image) }});
+                                                background-image: url({{ asset('storage/teacher/'.$teacher->image) }});
                                             }
                                         </style>
                                         <!--end::Image input placeholder-->
@@ -184,7 +150,7 @@
                                                 data-kt-initialized="1">
                                                 <i class="bi bi-pencil-fill fs-7"></i>
                                                 <!--begin::Inputs-->
-                                                <input type="file" name="image" accept=".png">
+                                                <input type="file" name="image" >
                                                 <input type="hidden" name="avatar_remove">
                                                 <!--end::Inputs-->
                                             </label>
@@ -223,11 +189,11 @@
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="">Phone</span>
+                                            <span class="required">Phone</span>
                                         </label>
                                         <!--end::Label-->
                                         <input type="text" class="form-control form-control-solid"
-                                            value="{{ old('phone',$ourLeader->phone) }}" placeholder="Enter Phone Number"
+                                            value="{{ old('phone',$teacher->phone) }}" placeholder="Enter Phone Number"
                                             name="phone">
                                         @error('phone')
                                             <div class="fv-plugins-message-container invalid-feedback">
@@ -238,11 +204,11 @@
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="">Email</span>
+                                            <span class="required">Email</span>
                                         </label>
                                         <!--end::Label-->
                                         <input type="text" class="form-control form-control-solid"
-                                            value="{{ old('email',$ourLeader->email) }}" placeholder="Enter email address"
+                                            value="{{ old('email',$teacher->email) }}" placeholder="Enter email address"
                                             name="email">
                                         @error('email')
                                             <div class="fv-plugins-message-container invalid-feedback">
@@ -251,15 +217,65 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+
+                                <div class="col-md-6">
                                     <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                                         <!--begin::Label-->
                                         <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                                            <span class="">Details</span>
+                                            <span class="required">Facebook url</span>
                                         </label>
                                         <!--end::Label-->
-                                        <textarea name="details" id="details" cols="30" rows="10">{{ old('details',$ourLeader->details) }}</textarea>
-                                        @error('details')
+                                        <input type="text" class="form-control form-control-solid"
+                                            value="{{ old('facebook',$teacher->facebook) }}" placeholder="Enter facebook url" name="facebook">
+                                        @error('facebook')
+                                            <div class="fv-plugins-message-container invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                            <span class="required">Twitter url</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            value="{{ old('twitter',$teacher->twitter) }}" placeholder="Enter twitter url" name="twitter">
+                                        @error('twitter')
+                                            <div class="fv-plugins-message-container invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                            <span class="required">Instagram url</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            value="{{ old('instagram',$teacher->instagram) }}" placeholder="Enter instagram url" name="instagram">
+                                        @error('instagram')
+                                            <div class="fv-plugins-message-container invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                                        <!--begin::Label-->
+                                        <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                            <span class="">Address</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <textarea name="address" id="address" class="form-control form-control-solid" cols="5" rows="2">{{ old('address',$teacher->address) }}</textarea>
+                                        @error('address')
                                             <div class="fv-plugins-message-container invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -280,7 +296,7 @@
                                         <label class="form-check form-switch form-check-custom form-check-solid">
                                             <!--begin::Input-->
                                             <input class="form-check-input" name="status" type="checkbox"
-                                                value="1" {{ old('status',$ourLeader->status) == 1 ? 'checked' : '' }}>
+                                                value="1" {{ old('status',$teacher->status) == 1 ? 'checked' : '' }}>
                                             <!--end::Input-->
                                             <!--begin::Label-->
                                             <span class="form-check-label fw-semibold text-muted">Yes</span>
@@ -302,8 +318,8 @@
                                 <button type="reset"
                                     class="btn btn-light btn-active-light-primary me-2">Discard</button>
                                 <button type="submit" class="btn btn-primary"
-                                    id="kt_account_profile_details_submit">Update
-                                    Leader</button>
+                                    id="kt_account_profile_details_submit">Store
+                                    Teacher</button>
                             </div>
                         </form>
                     </div>
@@ -320,6 +336,11 @@
 @endsection
 @push('js')
     <!--CKEditor Build Bundles:: Only include the relevant bundles accordingly-->
+    {{-- <script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-inline.bundle.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-balloon.bundle.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-balloon-block.bundle.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/custom/ckeditor/ckeditor-document.bundle.js')}}"></script> --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <script>
         ClassicEditor

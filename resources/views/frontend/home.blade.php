@@ -50,7 +50,7 @@
                                     <div class="swiper-slide">
                                         <div class="rbt-card variation-01 rbt-hover">
                                             <div class="rbt-card-img">
-                                                <a href="{{route('course-view',$course->name)}}">
+                                                <a href="{{ route('course-view', $course->name) }}">
                                                     <img src="{{ asset('assets/frontend/images/course/course-01.jpg') }}"
                                                         alt="Card image">
                                                     <div class="rbt-badge-3 bg-white">
@@ -61,10 +61,12 @@
                                             </div>
                                             <div class="rbt-card-body">
                                                 <ul class="rbt-meta">
-                                                    <li><i class="feather-book"></i>{{ count($course->batches) }} Batches</li>
+                                                    <li><i class="feather-book"></i>{{ count($course->batches) }} Batches
+                                                    </li>
                                                     {{-- <li><i class="feather-users"></i>50 Students</li> --}}
                                                 </ul>
-                                                <h4 class="rbt-card-title"><a href="{{route('course-view',$course->name)}}">{{$course->name}}</a>
+                                                <h4 class="rbt-card-title"><a
+                                                        href="{{ route('course-view', $course->name) }}">{{ $course->name }}</a>
                                                 </h4>
                                                 <p class="rbt-card-text">It is a long established fact that a reader
                                                     will be distracted.</p>
@@ -83,7 +85,8 @@
                                                         <span class="current-price"></span>
                                                         <span class="off-price"></span>
                                                     </div>
-                                                    <a class="rbt-btn-link" href="{{route('course-view',$course->name)}}">Learn More<i
+                                                    <a class="rbt-btn-link"
+                                                        href="{{ route('course-view', $course->name) }}">Learn More<i
                                                             class="feather-arrow-right"></i></a>
                                                 </div>
                                             </div>
@@ -1144,283 +1147,61 @@
                 <div class="col-lg-7">
                     <!-- Start Tab Content  -->
                     <div class="rbt-team-tab-content tab-content" id="myTabContent">
-                        <div class="tab-pane fade active show" id="team-tab1" role="tabpanel"
-                            aria-labelledby="team-tab1-tab">
-                            <div class="inner">
-                                <div class="rbt-team-thumbnail">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets/frontend/images/team/team-01.jpg') }}"
-                                            alt="Testimonial Images">
+                        @foreach ($teachers as $key => $teacher)
+                            <div class="tab-pane fade active show" id="team-tab{{ $key }}" role="tabpanel"
+                                aria-labelledby="team-tab{{ $key }}-tab">
+                                <div class="inner">
+                                    <div class="rbt-team-thumbnail">
+                                        <div class="thumb">
+                                            @if ($teacher->image)
+                                                <img src="{{ asset('storage/teacher/' . $teacher->image) }}"
+                                                    alt="Testimonial Images">
+                                            @else
+                                                <img src="{{ asset('assets/frontend/images/team/team-01.jpg') }}"
+                                                    alt="Testimonial Images">
+                                            @endif
+
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="rbt-team-details">
-                                    <div class="author-info">
-                                        <h4 class="title">Mames Mary</h4>
-                                        <span class="designation theme-gradient">English Teacher</span>
-                                        <span class="team-form">
-                                            <i class="feather-map-pin"></i>
-                                            <span class="location">CO Miego, AD,USA</span>
-                                        </span>
+                                    <div class="rbt-team-details">
+                                        <div class="author-info">
+                                            <h4 class="title">{{ $teacher->name }}</h4>
+                                            <span
+                                                class="designation theme-gradient">{{ $teacher->subject ? $teacher->subject : '' }}</span>
+                                            <span class="team-form">
+                                                <i class="feather-map-pin"></i>
+                                                <span class="location">{{ $teacher->address }}</span>
+                                            </span>
+                                        </div>
+                                        <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+                                            below for those interested.</p>
+                                        <ul class="social-icon social-default mt--20 justify-content-start">
+                                            <li><a href="{{ $teacher->facebook ? $teacher->facebook : '#' }}">
+                                                    <i class="feather-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li><a href="{{ $teacher->twitter ? $teacher->twitter : '#' }}">
+                                                    <i class="feather-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li><a href="{{ $teacher->instagram ? $teacher->instagram : '#' }}">
+                                                    <i class="feather-instagram"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="rbt-information-list mt--25">
+                                            <li>
+                                                <a href="#"><i class="feather-phone"></i>{{ $teacher->phone }}</a>
+                                            </li>
+                                            <li>
+                                                <a href="mailto:{{ $teacher->email }}"><i
+                                                        class="feather-mail"></i>{{ $teacher->email }}</a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-                                        below for those interested.</p>
-                                    <ul class="social-icon social-default mt--20 justify-content-start">
-                                        <li><a href="https://www.facebook.com/">
-                                                <i class="feather-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.twitter.com/">
-                                                <i class="feather-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.instagram.com/">
-                                                <i class="feather-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="rbt-information-list mt--25">
-                                        <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
-                                        </li>
-                                        <li>
-                                            <a href="mailto:hello@example.com"><i
-                                                    class="feather-mail"></i>example@gmail.com</a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="team-tab2" role="tabpanel" aria-labelledby="team-tab2-tab">
-                            <div class="inner">
-                                <div class="rbt-team-thumbnail">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets/frontend/images/team/team-02.jpg') }}"
-                                            alt="Testimonial Images">
-                                    </div>
-                                </div>
-                                <div class="rbt-team-details">
-                                    <div class="author-info">
-                                        <h4 class="title">Robert Song</h4>
-                                        <span class="designation theme-gradient">Math Teacher</span>
-                                        <span class="team-form">
-                                            <i class="feather-map-pin"></i>
-                                            <span class="location">CO Miego, AD,USA</span>
-                                        </span>
-                                    </div>
-                                    <p>Education The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-                                        below for those interested.</p>
-                                    <ul class="social-icon social-default mt--20 justify-content-start">
-                                        <li><a href="https://www.facebook.com/">
-                                                <i class="feather-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.twitter.com/">
-                                                <i class="feather-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.instagram.com/">
-                                                <i class="feather-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="rbt-information-list mt--25">
-                                        <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
-                                        </li>
-                                        <li>
-                                            <a href="mailto:hello@example.com"><i
-                                                    class="feather-mail"></i>example@gmail.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="team-tab3" role="tabpanel" aria-labelledby="team-tab3-tab">
-                            <div class="inner">
-                                <div class="rbt-team-thumbnail">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets/frontend/images/team/team-03.jpg') }}"
-                                            alt="Testimonial Images">
-                                    </div>
-                                </div>
-                                <div class="rbt-team-details">
-                                    <div class="author-info">
-                                        <h4 class="title">William Susan</h4>
-                                        <span class="designation theme-gradient">React Teacher</span>
-                                        <span class="team-form">
-                                            <i class="feather-map-pin"></i>
-                                            <span class="location">CO Miego, AD,USA</span>
-                                        </span>
-                                    </div>
-                                    <p>React The standard chunk of Lorem Ipsum used since the 1500s is reproduced below
-                                        for those interested.</p>
-                                    <ul class="social-icon social-default mt--20 justify-content-start">
-                                        <li><a href="https://www.facebook.com/">
-                                                <i class="feather-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.twitter.com/">
-                                                <i class="feather-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.instagram.com/">
-                                                <i class="feather-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="rbt-information-list mt--25">
-                                        <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
-                                        </li>
-                                        <li>
-                                            <a href="mailto:hello@example.com"><i
-                                                    class="feather-mail"></i>example@gmail.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="team-tab4" role="tabpanel" aria-labelledby="team-tab4-tab">
-                            <div class="inner">
-                                <div class="rbt-team-thumbnail">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets/frontend/images/team/team-04.jpg') }}"
-                                            alt="Testimonial Images">
-                                    </div>
-                                </div>
-                                <div class="rbt-team-details">
-                                    <div class="author-info">
-                                        <h4 class="title">Soseph Sara</h4>
-                                        <span class="designation theme-gradient">Web Teacher</span>
-                                        <span class="team-form">
-                                            <i class="feather-map-pin"></i>
-                                            <span class="location">CO Miego, AD,USA</span>
-                                        </span>
-                                    </div>
-                                    <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-                                        below for those interested.</p>
-                                    <ul class="social-icon social-default mt--20 justify-content-start">
-                                        <li><a href="https://www.facebook.com/">
-                                                <i class="feather-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.twitter.com/">
-                                                <i class="feather-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.instagram.com/">
-                                                <i class="feather-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="rbt-information-list mt--25">
-                                        <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
-                                        </li>
-                                        <li>
-                                            <a href="mailto:hello@example.com"><i
-                                                    class="feather-mail"></i>example@gmail.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="team-tab5" role="tabpanel" aria-labelledby="team-tab5-tab">
-                            <div class="inner">
-                                <div class="rbt-team-thumbnail">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets/frontend/images/team/team-05.jpg') }}"
-                                            alt="Testimonial Images">
-                                    </div>
-                                </div>
-                                <div class="rbt-team-details">
-                                    <div class="author-info">
-                                        <h4 class="title">Thomas Dal</h4>
-                                        <span class="designation theme-gradient">Graphic Teacher</span>
-                                        <span class="team-form">
-                                            <i class="feather-map-pin"></i>
-                                            <span class="location">CO Miego, AD,USA</span>
-                                        </span>
-                                    </div>
-                                    <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-                                        below for those interested.</p>
-                                    <ul class="social-icon social-default mt--20 justify-content-start">
-                                        <li><a href="https://www.facebook.com/">
-                                                <i class="feather-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.twitter.com/">
-                                                <i class="feather-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.instagram.com/">
-                                                <i class="feather-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="rbt-information-list mt--25">
-                                        <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
-                                        </li>
-                                        <li>
-                                            <a href="mailto:hello@example.com"><i
-                                                    class="feather-mail"></i>example@gmail.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="team-tab6" role="tabpanel" aria-labelledby="team-tab6-tab">
-                            <div class="inner">
-                                <div class="rbt-team-thumbnail">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets/frontend/images/team/team-06.jpg') }}"
-                                            alt="Testimonial Images">
-                                    </div>
-                                </div>
-                                <div class="rbt-team-details">
-                                    <div class="author-info">
-                                        <h4 class="title">Christopher Lisa</h4>
-                                        <span class="designation theme-gradient">English Teacher</span>
-                                        <span class="team-form">
-                                            <i class="feather-map-pin"></i>
-                                            <span class="location">CO Miego, AD,USA</span>
-                                        </span>
-                                    </div>
-                                    <p>BD Skill IT The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-                                        below for those interested.</p>
-                                    <ul class="social-icon social-default mt--20 justify-content-start">
-                                        <li><a href="https://www.facebook.com/">
-                                                <i class="feather-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.twitter.com/">
-                                                <i class="feather-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.instagram.com/">
-                                                <i class="feather-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="rbt-information-list mt--25">
-                                        <li>
-                                            <a href="#"><i class="feather-phone"></i>+1-202-555-0174</a>
-                                        </li>
-                                        <li>
-                                            <a href="mailto:hello@example.com"><i
-                                                    class="feather-mail"></i>example@gmail.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                         <div class="top-circle-shape"></div>
                     </div>
                     <!-- End Tab Content  -->
@@ -1429,19 +1210,27 @@
                 <div class="col-lg-5">
                     <!-- Start Tab Nav  -->
                     <ul class="rbt-team-tab-thumb nav nav-tabs" id="myTab" role="tablist">
+                          @foreach ($teachers as $key => $teacher)
                         <li>
-                            <a class="active" id="team-tab1-tab" data-bs-toggle="tab" data-bs-target="#team-tab1"
-                                role="tab" aria-controls="team-tab1" aria-selected="true">
+                            <a class="active" id="team-tab{{$key}}-tab" data-bs-toggle="tab" data-bs-target="#team-tab{{$key}}"
+                                role="tab" aria-controls="team-tab{{$key}}" aria-selected="true">
                                 <div class="rbt-team-thumbnail">
                                     <div class="thumb">
-                                        <img src="{{ asset('assets/frontend/images/team/team-01.jpg') }}"
-                                            alt="Testimonial Images">
+                                        @if ($teacher->image)
+                                            <img src="{{ asset('storage/teacher/' . $teacher->image) }}"
+                                                alt="Testimonial Images">
+                                        @else
+                                            <img src="{{ asset('assets/frontend/images/team/team-01.jpg') }}"
+                                                alt="Testimonial Images">
+                                        @endif
+
                                     </div>
                                 </div>
                             </a>
                         </li>
+                        @endforeach
 
-                        <li>
+                        {{-- <li>
                             <a id="team-tab2-tab" data-bs-toggle="tab" data-bs-target="#team-tab2" role="tab"
                                 aria-controls="team-tab2" aria-selected="false">
                                 <div class="rbt-team-thumbnail">
@@ -1498,7 +1287,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </li>
+                        </li> --}}
 
                     </ul>
                     <!-- End Tab Content  -->
@@ -1544,8 +1333,8 @@
                             <h3 class="rbt-card-title"><a href="#">React</a></h3>
                             <p class="rbt-card-text">It is a long established fact that a reader.</p>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="#">Learn More<i><svg
-                                            width="17" height="12" xmlns="http://www.w3.org/2000/svg">
+                                <a class="transparent-button" href="#">Learn More<i><svg width="17"
+                                            height="12" xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
                                                 <path stroke-linecap="square" d="M.663 5.572h14.594" />
@@ -1563,15 +1352,15 @@
                     <div class="rbt-card card-list variation-02 rbt-hover">
                         <div class="rbt-card-img">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/blog/blog-card-02.jpg') }}"
-                                    alt="Card image"> </a>
+                                <img src="{{ asset('assets/frontend/images/blog/blog-card-02.jpg') }}" alt="Card image">
+                            </a>
                         </div>
                         <div class="rbt-card-body">
                             <h5 class="rbt-card-title"><a href="#">Why Is Education So Famous?</a>
                             </h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="#">Read Article<i><svg
-                                            width="17" height="12" xmlns="http://www.w3.org/2000/svg">
+                                <a class="transparent-button" href="#">Read Article<i><svg width="17"
+                                            height="12" xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
                                                 <path stroke-linecap="square" d="M.663 5.572h14.594" />
@@ -1586,15 +1375,15 @@
                     <div class="rbt-card card-list variation-02 rbt-hover mt--30">
                         <div class="rbt-card-img">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/blog/blog-card-03.jpg') }}"
-                                    alt="Card image"> </a>
+                                <img src="{{ asset('assets/frontend/images/blog/blog-card-03.jpg') }}" alt="Card image">
+                            </a>
                         </div>
                         <div class="rbt-card-body">
                             <h5 class="rbt-card-title"><a href="#">Difficult Things About
                                     Education.</a></h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="#">Read Article<i><svg
-                                            width="17" height="12" xmlns="http://www.w3.org/2000/svg">
+                                <a class="transparent-button" href="#">Read Article<i><svg width="17"
+                                            height="12" xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
                                                 <path stroke-linecap="square" d="M.663 5.572h14.594" />
@@ -1609,15 +1398,15 @@
                     <div class="rbt-card card-list variation-02 rbt-hover mt--30">
                         <div class="rbt-card-img">
                             <a href="#">
-                                <img src="{{ asset('assets/frontend/images/blog/blog-card-04.jpg') }}"
-                                    alt="Card image"> </a>
+                                <img src="{{ asset('assets/frontend/images/blog/blog-card-04.jpg') }}" alt="Card image">
+                            </a>
                         </div>
                         <div class="rbt-card-body">
                             <h5 class="rbt-card-title"><a href="#">Education Is So Famous, But
                                     Why?</a></h5>
                             <div class="rbt-card-bottom">
-                                <a class="transparent-button" href="#">Read Article<i><svg
-                                            width="17" height="12" xmlns="http://www.w3.org/2000/svg">
+                                <a class="transparent-button" href="#">Read Article<i><svg width="17"
+                                            height="12" xmlns="http://www.w3.org/2000/svg">
                                             <g stroke="#27374D" fill="none" fill-rule="evenodd">
                                                 <path d="M10.614 0l5.629 5.629-5.63 5.629" />
                                                 <path stroke-linecap="square" d="M.663 5.572h14.594" />

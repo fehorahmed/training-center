@@ -88,8 +88,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/all', [TeacherController::class, 'getData'])->name('teacher.data');
         Route::get('/create', [TeacherController::class, 'create'])->name('teacher.create');
         Route::post('/store', [TeacherController::class, 'store'])->name('teacher.store');
-        Route::get('/{ourLeader}/edit', [TeacherController::class, 'edit'])->name('teacher.edit');
-        Route::post('/{ourLeader}/update', [TeacherController::class, 'update'])->name('teacher.update');
+        Route::get('/{teacher}/edit', [TeacherController::class, 'edit'])->name('teacher.edit');
+        Route::post('/{teacher}/update', [TeacherController::class, 'update'])->name('teacher.update');
     });
 
     Route::get('/global-config', [GlobalConfigController::class, 'index'])->name('global-config');

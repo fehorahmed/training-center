@@ -122,7 +122,7 @@
                                         <label class="d-block fw-semibold fs-6 mb-5">
                                             <span class="">Image</span>
                                             <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                                title="E.g. Select an image dimension is width=355,height=240"></i>
+                                                title="E.g. Select an image ratio is = 260/348"></i>
                                         </label>
                                         <!--end::Label-->
                                         <!--begin::Image input placeholder-->
@@ -150,7 +150,7 @@
                                                 data-kt-initialized="1">
                                                 <i class="bi bi-pencil-fill fs-7"></i>
                                                 <!--begin::Inputs-->
-                                                <input type="file" name="image" accept=".png">
+                                                <input type="file" name="image" >
                                                 <input type="hidden" name="avatar_remove">
                                                 <!--end::Inputs-->
                                             </label>
